@@ -26,27 +26,27 @@ const Navbar: React.FC = () => {
       <Link to='/' className='title' onClick={closeMenus}>VANILIE.</Link>
       <nav className={`navbar ${menuOpen ? "close" : "open"}`}>
         <div className='container_products'>
-          <Link to='/productos' className='link'>Productos <MdKeyboardArrowDown /></Link>
+          <Link to='/productos' className='link' onClick={closeMenus}>Productos <MdKeyboardArrowDown /></Link>
           <div className='dropdownmenu'>
-            <Link to='/' className='link_dropdownmenu'>Remeras</Link>
-            <Link to='/' className='link_dropdownmenu'>Pantalones</Link>
-            <Link to='/' className='link_dropdownmenu'>Bermudas</Link>
-            <Link to='/' className='link_dropdownmenu'>Zapatillas</Link>
-            <Link to='/' className='link_dropdownmenu'>Buzos</Link>
-            <Link to='/' className='link_dropdownmenu'>Camperas</Link>
-            <Link to='/' className='link_dropdownmenu'>Camisas</Link>
-            <Link to='/' className='link_dropdownmenu'>Tops y bodies</Link>
-            <Link to='/' className='link_dropdownmenu'>Polleras</Link>
-            <Link to='/' className='link_dropdownmenu'>Shorts</Link>
-            <Link to='/' className='link_dropdownmenu'>Vestidos</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Remeras</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Pantalones</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Bermudas</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Zapatillas</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Buzos</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Camperas</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Camisas</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Tops y bodies</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Polleras</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Shorts</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Vestidos</Link>
           </div>
         </div>
-        <Link to='/hombre' className='link'>Hombre</Link>
-        <Link to='/mujer' className='link'>Mujer</Link>
-        <Link to='sobrenosotros' className='link'>Sobre nosotros</Link>
-        <Link to='contacto' className='link'>Contacto</Link>
-        <Link to='contacto' className='link - link_user'>Iniciar sesión</Link>
-        <Link to='contacto' className='link - link_search'>Buscar</Link>
+        <Link to='/hombre' className='link' onClick={closeMenus}>Hombre</Link>
+        <Link to='/mujer' className='link' onClick={closeMenus}>Mujer</Link>
+        <Link to='sobrenosotros' className='link' onClick={closeMenus}>Sobre nosotros</Link>
+        <Link to='contacto' className='link' onClick={closeMenus}>Contacto</Link>
+        <Link to='contacto' className='link - link_user' onClick={closeMenus}>Iniciar sesión</Link>
+        <Link to='contacto' className='link - link_search' onClick={closeMenus}>Buscar</Link>
 
       </nav>
       <div className='container_icons'>
