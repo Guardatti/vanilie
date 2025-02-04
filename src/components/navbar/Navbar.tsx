@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiMenu } from "react-icons/fi";
 import './navbar.css'
 import { Link } from 'react-router-dom';
@@ -9,11 +9,18 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 
 const Navbar: React.FC = () => {
+ 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   return (
     <header className='header'>
-      <FiMenu className='menuicon'/>
+      <FiMenu className='menuicon' onClick={toggleMenu}/>
       <Link to='/' className='title'>VANILIE.</Link>
-      <nav className='navbar'>
+      <nav data-menu-open={menuOpen} className='navbar'>
         <div className='container_products'>
           <Link to='/productos' className='link'>Productos <MdKeyboardArrowDown /></Link>
           <div className='dropdownmenu'>
@@ -34,8 +41,11 @@ const Navbar: React.FC = () => {
         <Link to='/mujer' className='link'>Mujer</Link>
         <Link to='sobrenosotros' className='link'>Sobre nosotros</Link>
         <Link to='contacto' className='link'>Contacto</Link>
+        <Link to='contacto' className='link - link_user'>Iniciar sesión</Link>
+        <Link to='contacto' className='link - link_search'>Buscar</Link>
+
       </nav>
-      <div className='container-icons'>
+      <div className='container_icons'>
         <GrSearch className='searchicon'/>
         <FaUser className='usericon'/>
         <FaShoppingBag className='bagicon'/>
