@@ -16,10 +16,14 @@ const Navbar: React.FC = () => {
     setMenuOpen(!menuOpen);
   }
 
+  const closeMenus = () => {
+    setMenuOpen(false);
+  }
+
   return (
     <header className='header'>
       <FiMenu className='menuicon' onClick={toggleMenu}/>
-      <Link to='/' className='title'>VANILIE.</Link>
+      <Link to='/' className='title' onClick={closeMenus}>VANILIE.</Link>
       <nav className={`navbar ${menuOpen ? "close" : "open"}`}>
         <div className='container_products'>
           <Link to='/productos' className='link'>Productos <MdKeyboardArrowDown /></Link>
@@ -50,6 +54,9 @@ const Navbar: React.FC = () => {
         <FaUser className='usericon'/>
         <FaShoppingBag className='bagicon'/>
       </div>
+
+      {menuOpen && <div className='overlay' onClick={closeMenus}/>}
+      
     </header>
   )
 }
