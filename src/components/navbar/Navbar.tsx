@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
     <header className='header'>
       <FiMenu className='menuicon' onClick={toggleMenu}/>
       <Link to='/' className='title'>VANILIE.</Link>
-      <nav data-menu-open={menuOpen} className='navbar'>
+      <nav className={`navbar ${menuOpen ? "close" : "open"}`}>
         <div className='container_products'>
           <Link to='/productos' className='link'>Productos <MdKeyboardArrowDown /></Link>
           <div className='dropdownmenu'>
