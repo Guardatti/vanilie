@@ -14,7 +14,7 @@
     cursor: pointer;
     color: #000000;
     display: none;
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         display: flex;
         margin-left: 1rem;
     }
@@ -22,7 +22,7 @@
 
 .title{
     font-size: 50px;
-    font-weight: 900;
+    font-weight: 1000;
     color: #000000;
     margin-left: 1rem;
 }
@@ -46,7 +46,7 @@
         border-top: 1px solid #000000;
         overflow-y: auto;
     }
-    @media (min-width: 576px) and (max-width: 1009px) {
+    @media (min-width: 576px) and (max-width: 1050px) {
         background-color: #ffffff;
         position: absolute;
         top: 100%;
@@ -62,13 +62,13 @@
 }
 
 .navbar.close{
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         transform: translateY(0%);
     }
 }
 
 .navbar.open{
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         transform: translateX(-150%);
     }
 }
@@ -80,7 +80,7 @@
             transition: all 0.5s ease-in;
         }
     }
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         width: 100%;
         &:hover{
             .dropdownmenu{
@@ -106,7 +106,7 @@
     transition: all 0.5s ease-out;
     background-color: #ffffff;
     z-index: 2;
-    @media (min-width: 320px) and (max-width: 1009px) {
+    @media (min-width: 320px) and (max-width: 1050px) {
         position: relative;
         width: 100%;
         top: 0%;
@@ -118,11 +118,11 @@
 }
 
 .link_dropdownmenu{
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 400;
     color: #000000;
     padding: 10px;
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         border-bottom: 1px solid #000000;
         width: 100%;
         padding-left: 1rem;
@@ -130,14 +130,14 @@
 }
 
 .link{
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 500;
     color: #000000;
     padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    @media (min-width: 320px) and (max-width: 1009px){
+    @media (min-width: 320px) and (max-width: 1050px){
         border-bottom: 1px solid #000000;
         width: 100%;
         justify-content: space-between;
@@ -148,7 +148,7 @@
 
 .link_user, .link_search{
     display: none;
-    @media (min-width: 320px) and (max-width: 1009px) {
+    @media (min-width: 320px) and (max-width: 1050px) {
         display: flex;
     }
 }
@@ -169,7 +169,7 @@
 }
 
 .searchicon, .usericon{
-    @media (min-width: 320px) and (max-width: 1009px) {
+    @media (min-width: 320px) and (max-width: 1050px) {
         display: none;
     }
 }

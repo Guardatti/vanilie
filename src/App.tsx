@@ -13,7 +13,7 @@ function App() {
       box-sizing: border-box;
       text-decoration: none;
       list-style: none;
-      font-family: 'Roboto Condensed';
+      font-family: 'Roboto';
     }
   `
 
