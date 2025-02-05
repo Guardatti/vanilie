@@ -1,10 +1,14 @@
 import React from 'react'
+import Slider from './Slider'
+import './home.css'
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <img src="vite.svg" alt="" style={{width: 1000}} />
-    </div>
+    <section className='section'>
+      <div className='container-slider'>
+        <Slider />
+      </div>
+    </section>
   )
 }
 

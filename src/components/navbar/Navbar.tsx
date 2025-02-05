@@ -8,6 +8,7 @@ import { GrSearch } from "react-icons/gr";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 
+
 const Navbar: React.FC = () => {
  
   const [menuOpen, setMenuOpen] = useState(false);

@@ -9,7 +9,6 @@ const Routes = () => {
         <Layout>
             <ReactRoutes>
                 <Route path="/" element={<Home />}/>
-                <Route />
             </ReactRoutes>
         </Layout>
     </BrowserRouter>
