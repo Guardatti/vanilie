@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
             <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Polleras</Link>
             <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Shorts</Link>
             <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Vestidos</Link>
+            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Carteras</Link>
           </div>
         </div>
         <Link to='/hombre' className='link' onClick={closeMenus}>Hombre</Link>
