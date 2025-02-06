@@ -3,10 +3,6 @@
     height: 650px;
 }
 
-.swiper-slide{
-    display: flex;
-}
-
 .swiper-slide img{
     display: block;
     width: 100%;
