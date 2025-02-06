@@ -176,6 +176,15 @@
     }
 }
 
+.cart-bubble{
+    position: absolute;
+    top: 37px;
+    right: 28px;
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+}
+
 .overlay{
     position: absolute;
     background-color: #000000;

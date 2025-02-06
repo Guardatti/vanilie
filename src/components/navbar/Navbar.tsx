@@ -56,6 +56,8 @@ const Navbar: React.FC = () => {
         <GrSearch className='searchicon'/>
         <FaUser className='usericon'/>
         <FaShoppingBag className='bagicon'/>
+        {/*Poner máximo de compra 9 productos ya que el número 10 descentraliza el numero de la bolsa*/}
+        <span className='cart-bubble'>0</span>
       </div>
 
       {menuOpen && <div className='overlay' onClick={closeMenus}/>}
