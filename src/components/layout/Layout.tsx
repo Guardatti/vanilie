@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
 
   return (
     <>
-        <Navbar/>
+        <Navbar />
           <div className='container'>
             {children}
           </div>
