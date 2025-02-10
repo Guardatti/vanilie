@@ -39,22 +39,22 @@ export const upperclothing: Images[] = [
     {
       id: 1,
       url: 'img_upperclothing/remeras.avif',
-      alt: 'Remeras',
+      alt: 'REMERAS',
     },
     {
       id: 2,
       url: 'img_upperclothing/musculosas.avif',
-      alt: 'Musculosas',
+      alt: 'MUSCULOSAS',
     },
     {
       id: 3,
       url: 'img_upperclothing/camisas.avif',
-      alt: 'Camisas',
+      alt: 'CAMISAS',
     },
     {
       id: 4,
       url: 'img_upperclothing/tops.avif',
-      alt: 'Tops',
+      alt: 'TOPS',
     },
 ]
   
@@ -62,22 +62,22 @@ export const bottoms: Images[] = [
     {
         id: 1,
         url: 'img_bottoms/pantalon.avif',
-        alt: 'Pantalon',
+        alt: 'PANTALONES',
     },
     {
         id: 2,
         url: 'img_bottoms/bermuda.avif',
-        alt: 'Bermuda',
+        alt: 'BERMUDAS',
     },
     {
         id: 3,
         url: 'img_bottoms/short.avif',
-        alt: 'Short',
+        alt: 'SHOTRS',
     },
     {
         id: 4,
         url: 'img_bottoms/pollera.avif',
-        alt: 'Pollera',
+        alt: 'POLLERAS',
     },
 ]
 
@@ -85,22 +85,22 @@ export const completeLook: Images[] = [
     {
       id: 1,
       url: 'img_completelook/vestido.avif',
-      alt: 'Vestido',
+      alt: 'VESTIDOS',
     },
     {
       id: 2,
       url: 'img_completelook/conjunto.avif',
-      alt: 'Conjunto',
+      alt: 'CONJUNTOS',
     },
     {
       id: 3,
       url: 'img_completelook/cartera.avif',
-      alt: 'Cartera',
+      alt: 'CARTERAS',
     },
     {
       id: 4,
       url: 'img_completelook/zapatilla.avif',
-      alt: 'Zapatilla',
+      alt: 'ZAPATILLAS',
     },
 ]
 

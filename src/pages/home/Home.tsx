@@ -20,6 +20,7 @@ const Home: React.FC = () => {
             upperclothing.map((img) => (
               <Link to='/' className='img'>
                 <img key={img.id} src={img.url} alt={img.alt}/>
+                <span className='span'>{img.alt}</span>
               </Link>
             ))
           }
@@ -33,6 +34,7 @@ const Home: React.FC = () => {
             bottoms.map((img) => (
               <Link to='/' className='img'>
                 <img key={img.id} src={img.url} alt={img.alt}/>
+                <span className='span'>{img.alt}</span>
               </Link>
             ))
           }
@@ -46,6 +48,7 @@ const Home: React.FC = () => {
             completeLook.map((img) => (
               <Link to='/' className='img'>
                 <img key={img.id} src={img.url} alt={img.alt}/>
+                <span className='span'>{img.alt}</span>
               </Link>
             ))
           }

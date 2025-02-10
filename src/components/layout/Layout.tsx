@@ -9,6 +9,7 @@ interface LayoutProps {
     children: ReactNode,
 }
 
+
 const Layout: React.FC<LayoutProps> = ({children}) => {
 
     const { pathname } = useLocation();

@@ -40,6 +40,9 @@
     width: 25%;
     height: 550px;
     transition: all 0.4s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover{
         transform: scale(1.02);
         transition: all 0.4s ease-in;
@@ -48,4 +51,11 @@
         height: 350px;
         width: 50%;
     }
+}
+
+.span{
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    position: absolute
 }
