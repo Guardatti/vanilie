@@ -29,26 +29,26 @@ const Navbar: React.FC = () => {
         <div className='container_products'>
           <Link to='/productos' className='link' onClick={closeMenus}>PRODUCTOS <MdKeyboardArrowDown /></Link>
           <div className='dropdownmenu'>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Remeras</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Musculosas</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Pantalones</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Bermudas</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Zapatillas</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Camisas</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Tops</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Polleras</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Shorts</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Vestidos</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Conjuntos</Link>
-            <Link to='/' className='link_dropdownmenu' onClick={closeMenus}>Carteras</Link>
+            <Link to='/productos/remeras' className='link_dropdownmenu' onClick={closeMenus}>Remeras</Link>
+            <Link to='/productos/musculosas' className='link_dropdownmenu' onClick={closeMenus}>Musculosas</Link>
+            <Link to='/productos/pantalones' className='link_dropdownmenu' onClick={closeMenus}>Pantalones</Link>
+            <Link to='/productos/bermudas' className='link_dropdownmenu' onClick={closeMenus}>Bermudas</Link>
+            <Link to='/productos/zapatillas' className='link_dropdownmenu' onClick={closeMenus}>Zapatillas</Link>
+            <Link to='/productos/camisas' className='link_dropdownmenu' onClick={closeMenus}>Camisas</Link>
+            <Link to='/productos/tops' className='link_dropdownmenu' onClick={closeMenus}>Tops</Link>
+            <Link to='/productos/polleras' className='link_dropdownmenu' onClick={closeMenus}>Polleras</Link>
+            <Link to='/productos/shorts' className='link_dropdownmenu' onClick={closeMenus}>Shorts</Link>
+            <Link to='/productos/vestidos' className='link_dropdownmenu' onClick={closeMenus}>Vestidos</Link>
+            <Link to='/productos/conjuntos' className='link_dropdownmenu' onClick={closeMenus}>Conjuntos</Link>
+            <Link to='/productos/carteras' className='link_dropdownmenu' onClick={closeMenus}>Carteras</Link>
           </div>
         </div>
         <Link to='/hombre' className='link' onClick={closeMenus}>HOMBRE</Link>
         <Link to='/mujer' className='link' onClick={closeMenus}>MUJER</Link>
-        <Link to='sobrenosotros' className='link' onClick={closeMenus}>SOBRE NOSOTROS</Link>
-        <Link to='contacto' className='link' onClick={closeMenus}>CONTACTO</Link>
-        <Link to='contacto' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
-        <Link to='contacto' className='link - link_search' onClick={closeMenus}>BUSCAR</Link>
+        <Link to='/sobre-nosotros' className='link' onClick={closeMenus}>SOBRE NOSOTROS</Link>
+        <Link to='/contacto' className='link' onClick={closeMenus}>CONTACTO</Link>
+        <Link to='/iniciar-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
+        <Link to='/buscar' className='link - link_search' onClick={closeMenus}>BUSCAR</Link>
 
       </nav>
       <div className='container_icons'>

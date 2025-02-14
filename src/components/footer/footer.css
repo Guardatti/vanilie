@@ -9,6 +9,7 @@
 .container{
     display: flex;
     justify-content: space-evenly;
+    padding-top: 40px;
     @media (min-width: 320px) and (max-width: 767px) {
         flex-direction: column;
         gap: 50px;
@@ -41,7 +42,7 @@
 .categories, .information, .policy{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .container-paymentmethods{
