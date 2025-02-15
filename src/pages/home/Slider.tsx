@@ -25,7 +25,7 @@ const Slider: React.FC = () => {
         >
             {
                 sliderImages.map((img) => (
-                    <SwiperSlide key={img.id}><img src={img.url} alt={img.alt}/></SwiperSlide>
+                    <SwiperSlide key={img.id}><img src={img.url} alt={img.alt} className='img-slider'/></SwiperSlide>
                 ))
             }
         </Swiper>

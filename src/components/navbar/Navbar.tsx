@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
       <FiMenu className='menuicon' onClick={toggleMenu}/>
       <Link to='/' className='title' onClick={closeMenus}>VANILIE.</Link>
       <nav className={`navbar ${menuOpen ? "close" : "open"}`}>
-        <div className='container_products'>
+        <div className='container-navbar'>
           <Link to='/productos' className='link' onClick={closeMenus}>PRODUCTOS <MdKeyboardArrowDown /></Link>
           <div className='dropdownmenu'>
             <Link to='/productos/remeras' className='link_dropdownmenu' onClick={closeMenus}>Remeras</Link>
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
         <Link to='/buscar' className='link - link_search' onClick={closeMenus}>BUSCAR</Link>
 
       </nav>
-      <div className='container_icons'>
+      <div className='container-icons'>
         <GrSearch className='searchicon'/>
         <FaUser className='usericon'/>
         <FaShoppingBag className='bagicon'/>

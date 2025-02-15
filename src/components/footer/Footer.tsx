@@ -6,7 +6,7 @@ import { paymentMethods } from '../../utils/interfaces'
 const Footer: React.FC = () => {
   return (
     <footer className= 'footer'>
-      <div className='container'>
+      <div className='container-footer'>
         <div className='container-networks'>
           <h2>REDES</h2>
           <div className='networks'>

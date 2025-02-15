@@ -75,7 +75,7 @@
     }
 }
 
-.container_products{
+.container-navbar{
     &:hover{
         .dropdownmenu{
             max-height: 300px;
@@ -155,7 +155,7 @@
     }
 }
 
-.container_icons{
+.container-icons{
     display: flex;
     justify-content: center;
     align-items: center;

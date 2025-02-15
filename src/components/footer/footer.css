@@ -6,7 +6,7 @@
     gap: 40px;
 }
 
-.container{
+.container-footer{
     display: flex;
     justify-content: space-evenly;
     padding-top: 40px;
