@@ -18,7 +18,7 @@ const Home: React.FC = () => {
         <div className='container-img-home'>
           {
             upperclothing.map((img) => (
-              <Link to='/' className='img-home'>
+              <Link to={img.path} className='img-home'>
                 <img key={img.id} src={img.url} alt={img.alt} className='img-categories-home'/>
                 <span className='span-home'>{img.alt}</span>
               </Link>
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
         <div className='container-img-home'>
           {
             bottoms.map((img) => (
-              <Link to='/' className='img-home'>
+              <Link to={img.path} className='img-home'>
                 <img key={img.id} src={img.url} alt={img.alt} className='img-categories-home'/>
                 <span className='span-home'>{img.alt}</span>
               </Link>
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
         <div className='container-img-home'>
           {
             completeLook.map((img) => (
-              <Link to='/' className='img-home'>
+              <Link to={img.path} className='img-home'>
                 <img key={img.id} src={img.url} alt={img.alt} className='img-categories-home'/>
                 <span className='span-home'>{img.alt}</span>
               </Link>
