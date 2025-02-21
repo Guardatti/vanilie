@@ -4,6 +4,7 @@ import Home from "../pages/home/Home"
 import PageNotFound from "../pages/error/PageNotFound"
 import Return from "../pages/policy/return/Return"
 import Privacy from "../pages/policy/privacy/Privacy"
+import Aboutus from "../pages/aboutus/Aboutus"
 
 
 const Routes = () => {
@@ -20,7 +21,7 @@ const Routes = () => {
 
                 <Route path="/hombre" element={<Home />}/>
                 <Route path="/mujer" element={<Home />}/>
-                <Route path="/sobre-nosotros" element={<Home />}/>
+                <Route path="/sobre-nosotros" element={<Aboutus />}/>
                 <Route path="/contacto" element={<Home />}/>
                 <Route path="/politica-de-devolucion" element={<Return />}/>
                 <Route path="/politica-de-privacidad" element={<Privacy />}/>
