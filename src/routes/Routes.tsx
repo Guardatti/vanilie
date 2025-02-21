@@ -5,7 +5,6 @@ import PageNotFound from "../pages/error/PageNotFound"
 import Return from "../pages/policy/return/Return"
 import Privacy from "../pages/policy/privacy/Privacy"
 import Aboutus from "../pages/aboutus/Aboutus"
-import Contact from "../pages/contact/Contact"
 
 
 const Routes = () => {
@@ -23,7 +22,6 @@ const Routes = () => {
                 <Route path="/hombre" element={<Home />}/>
                 <Route path="/mujer" element={<Home />}/>
                 <Route path="/sobre-nosotros" element={<Aboutus />}/>
-                <Route path="/contacto" element={<Contact />}/>
                 <Route path="/politica-de-devolucion" element={<Return />}/>
                 <Route path="/politica-de-privacidad" element={<Privacy />}/>
 

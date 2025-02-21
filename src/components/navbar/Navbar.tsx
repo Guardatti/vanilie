@@ -6,6 +6,7 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { GrSearch } from "react-icons/gr";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import Contact from '../contact/Contact';
 
 
 
@@ -13,12 +14,21 @@ const Navbar: React.FC = () => {
  
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [contactOpen, setContactOpen] = useState(false)
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    setContactOpen(false);
+  }
+
+  const toggleContact = () => {
+    setContactOpen(!contactOpen);
+    setMenuOpen(false);
   }
 
   const closeMenus = () => {
     setMenuOpen(false);
+    setContactOpen(false);
   }
 
   return (
@@ -46,7 +56,7 @@ const Navbar: React.FC = () => {
         <Link to='/hombre' className='link' onClick={closeMenus}>HOMBRE</Link>
         <Link to='/mujer' className='link' onClick={closeMenus}>MUJER</Link>
         <Link to='/sobre-nosotros' className='link' onClick={closeMenus}>SOBRE NOSOTROS</Link>
-        <Link to='/contacto' className='link' onClick={closeMenus}>CONTACTO</Link>
+        <span className='link' style={{cursor: 'pointer'}} onClick={toggleContact}>CONTACTO</span>
         <Link to='/iniciar-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
         <Link to='/buscar' className='link - link_search' onClick={closeMenus}>BUSCAR</Link>
 
@@ -59,8 +69,10 @@ const Navbar: React.FC = () => {
         <span className='cart-bubble'>0</span>
       </div>
 
-      {menuOpen && <div className='overlay' onClick={closeMenus}/>}
-      
+      <Contact isOpen={contactOpen} setIsOpen={setContactOpen}/>
+
+      {(menuOpen) || (contactOpen) && <div className='overlay' onClick={closeMenus}/>}
+
     </header>
   )
 }

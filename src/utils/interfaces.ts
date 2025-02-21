@@ -163,3 +163,5 @@ export const paymentMethods: ImagesPaymentMethods[] = [
   },
 
 ]
+
+// ---
