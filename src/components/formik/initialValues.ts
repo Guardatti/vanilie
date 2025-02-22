@@ -4,7 +4,7 @@ interface ContactForm{
     message: string,
 }
 
-export const InitialValueContactForm: ContactForm = {
+export const initialValueContactForm: ContactForm = {
     name: '',
     email: '',
     message: '',

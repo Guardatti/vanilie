@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     background-color: #ffffff;
     border-bottom: 1px solid #000000;
     width: 100%;
@@ -65,7 +65,7 @@
 
 .navbar.close{
     @media (min-width: 320px) and (max-width: 1050px){
-        transform: translateY(0%);
+        transform: translatex(0%);
     }
 }
 

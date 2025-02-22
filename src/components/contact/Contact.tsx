@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import './contact.css'
-import { Formik } from 'formik'
-import { InitialValueContactForm } from '../formik/InitialValues'
-import { validationSchemaContactForm } from '../formik/ValidationSchema'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { validationSchemaContactForm } from '../formik/validationSchema'
+import { initialValueContactForm } from '../formik/initialValues'
+import { motion } from 'framer-motion'
+
 
 interface ContactProps {
   isOpen: boolean,
@@ -10,40 +12,76 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ( {isOpen, setIsOpen} ) => {
+
+  const form = useRef<HTMLFormElement | null>(null);
+
+  const [loading, setLoading] = useState(false);
+  
+
   return (
     <div className={`container-contact-form ${isOpen ? "close" : "open"}`}>
         <Formik
-          initialValues={InitialValueContactForm}
+          initialValues={initialValueContactForm}
           validationSchema={validationSchemaContactForm}
-          onSubmit={() => {}}
-        >
+          onSubmit={(values, {resetForm}) => {
 
-          <form className='contact-form'>
+            setLoading(true);
+            resetForm();
+
+          }}
+        >
+          <Form className='contact-form' ref={form}>
 
             <div className='container-contact-form-title'>
                 <p>CONTACTO</p>
             </div>
 
             <div className='container-contact-form-inputs'>
+
               <div className='container-contact-label-input'>
                 <label className='contact-label-form'>Nombre</label>
-                <input type="text" className='contact-input-form'/>
+                <Field
+                  type="text"
+                  name="name"
+                  className="contact-input-form"
+                />
+                <ErrorMessage name="name" component="span" className='contact-form-errorMessage'/>
               </div>
+
               <div className='container-contact-label-input'>
                 <label className='contact-label-form'>Email</label>
-                <input type="email" className='contact-input-form'/>
+                <Field
+                  type="email"
+                  name="email"
+                  className="contact-input-form"
+                />
+                <ErrorMessage name="email" component="span" className='contact-form-errorMessage'/>
               </div>
+
               <div className='container-contact-label-input'>
                 <label className='contact-label-form'>Mensaje</label>
-                <textarea className='contact-textarea-form'></textarea>
+                <Field
+                  name="message"
+                  as="textarea"
+                  className="contact-textarea-form"
+                />
+                <ErrorMessage name="message" component="span" className='contact-form-errorMessage'/>
               </div>
+
             </div>
 
             <div className='container-contact-form-button'>
-              <button className='contact-form-button'>Enviar</button>
+              {
+                loading ?
+                <div className='contact-form-loading'>
+                  <div className='loading'/>
+                </div>
+                :
+                <motion.button className='contact-form-button' type='submit' whileTap={{scale: 0.95}}>Enviar</motion.button>
+              }
             </div>
 
-          </form>
+          </Form>
 
         </Formik>
     </div>

@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
 
       <Contact isOpen={contactOpen} setIsOpen={setContactOpen}/>
 
-      {(menuOpen) || (contactOpen) && <div className='overlay' onClick={closeMenus}/>}
+      {((menuOpen) || (contactOpen)) && <div className='overlay' onClick={closeMenus}/>}
 
     </header>
   )
