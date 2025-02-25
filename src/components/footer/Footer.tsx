@@ -27,7 +27,6 @@ const Footer: React.FC = () => {
           <h2>INFORMACIÓN</h2>
           <div className='information'>
             <Link to='/sobre-nosotros' className='links'>Sobre nosotros</Link>
-            <Link to='/contacto' className='links'>Contacto</Link>
             <p className='information-p'>5493510000000</p>
             <p className='information-p'>vanilieclothing@gmail.com</p>
             <p className='information-p'>José Antonio de Sucre 2247</p>
