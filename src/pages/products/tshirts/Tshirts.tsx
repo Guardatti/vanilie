@@ -7,19 +7,25 @@ import { formatPrice } from '../../../utils/formatPrice'
 
 const Tshirts: React.FC = () => {
 
-  const [filter, setFilter] = useState<string>('HOMBRE Y MUJER')
+  const [filter, setFilter] = useState<string>('default')
 
-  const [filterPrice, setFilterPrice] = useState<string>('POR DEFECTO')
+  const [filterPrice, setFilterPrice] = useState<string>('default')
 
   const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value)
-    console.log(filter);
   };
 
   const handleChangeFilterPrice = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterPrice(event.target.value)
-    console.log(filterPrice);
   }
+
+  const filterProducts = products.filter((product) => (product.category === 'tshirts' && filter === 'default') || (product.category === 'tshirts' && product.sex === filter));
+
+  const sortedProducts =  filterPrice === 'high price to low price' ? [...filterProducts].sort((a, b) => b.price - a.price)
+                          :
+                          filterPrice === 'low price to high price' ? [...filterProducts].sort((a, b) => a.price - b.price)
+                          :
+                          [...filterProducts]
 
   return (
     <div className='container-product-tshirts'>
@@ -27,20 +33,20 @@ const Tshirts: React.FC = () => {
             <h1 className='title-tshirts'>REMERAS</h1>
             <div className='filter-tshirts'>
               <select className='select-tshirts' value={filter} onChange={handleChangeFilter}>
-                <option value="male">HOMBRE Y MUJER</option>
+                <option value="default">HOMBRE Y MUJER</option>
                 <option value="male">HOMBRE</option>
                 <option value="famele">MUJER</option>
               </select>
               <select className='select-tshirts' value={filterPrice} onChange={handleChangeFilterPrice}>
-                <option value="POR DEFECTO">FILTRAR</option>
-                <option value="MAYOR A MENOR">PRECIO: MAYOR A MENOR</option>
-                <option value="MENOR A MAYOR">PRECIO: MENOR A MAYOR</option>
+                <option value="default">FILTRAR</option>
+                <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
+                <option value="low price to high price">PRECIO: MENOR A MAYOR</option>
               </select>
             </div>
         </div>
         <div className='container-products'>
           {
-            products.filter((product) => product.category === ' tshirts').map((product) => (
+            sortedProducts.map((product) => (
               <div className='container-product-img-info' key={product.id}>
                 <div className='container-product-img'>
                   <img className='img-product' src={product.img}/>
