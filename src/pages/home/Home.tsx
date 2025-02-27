@@ -2,7 +2,9 @@ import React from 'react'
 import Slider from './Slider'
 import './home.css'
 import { Link } from 'react-router-dom'
-import { bottoms, completeLook, upperclothing } from '../../utils/interfaces'
+import { upperclothing } from '../../utils/interfaceHome/interfaceUpperClothing'
+import { bottoms } from '../../utils/interfaceHome/interfaceBottoms'
+import { completeLook } from '../../utils/interfaceHome/interfaceCompleteLook'
 
 
 const Home: React.FC = () => {

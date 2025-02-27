@@ -28,13 +28,13 @@
 
 
 .container-networks h2, .container-categories h2, .container-information h2, .container-policy h2{
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: #000000;
 }
 
 .networks a, .links, .information-p{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #000000;
 }
@@ -51,6 +51,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    padding-top: 50px;
 }
 
 .img-card{
@@ -70,7 +71,7 @@
 }
 
 .container-copyright p{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     text-align: center;
 }

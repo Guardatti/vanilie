@@ -1,5 +1,5 @@
 import React from 'react'
-import '../return/return.css'
+import '../policy.css'
 
 const Privacy: React.FC = () => {
   return (

@@ -1,7 +1,8 @@
 import React from 'react'
 import './footer.css'
 import { Link } from 'react-router-dom'
-import { paymentMethods } from '../../utils/interfaces'
+import { paymentMethods } from '../../utils/interfaceHome/interfacePaymentMethods'
+
 
 const Footer: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import './return.css'
+import '../policy.css'
 
 const Return: React.FC = () => {
   return (

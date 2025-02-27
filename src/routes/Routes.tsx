@@ -5,6 +5,7 @@ import PageNotFound from "../pages/error/PageNotFound"
 import Return from "../pages/policy/return/Return"
 import Privacy from "../pages/policy/privacy/Privacy"
 import Aboutus from "../pages/aboutus/Aboutus"
+import Tshirts from "../pages/products/tshirts/Tshirts"
 
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
 
                 <Route path="/productos">
                   <Route index element={<Home />} />
+                  <Route path="remeras" element={<Tshirts />} />
                   <Route path=":producto" element={<Home />} />
                 </Route>
 
