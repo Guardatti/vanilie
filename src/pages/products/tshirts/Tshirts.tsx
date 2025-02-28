@@ -28,16 +28,16 @@ const Tshirts: React.FC = () => {
                           [...filterProducts]
 
   return (
-    <div className='container-product-tshirts'>
-        <div className='container-tshirts-title-filter'>
-            <h1 className='title-tshirts'>REMERAS</h1>
-            <div className='filter-tshirts'>
-              <select className='select-tshirts' value={filter} onChange={handleChangeFilter}>
+    <div className='container-product-general'>
+        <div className='container-general-title-filter'>
+            <h1 className='title-products'>REMERAS</h1>
+            <div className='filter-products'>
+              <select className='select-general' value={filter} onChange={handleChangeFilter}>
                 <option value="default">HOMBRE Y MUJER</option>
                 <option value="male">HOMBRE</option>
                 <option value="famele">MUJER</option>
               </select>
-              <select className='select-tshirts' value={filterPrice} onChange={handleChangeFilterPrice}>
+              <select className='select-general' value={filterPrice} onChange={handleChangeFilterPrice}>
                 <option value="default">FILTRAR</option>
                 <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
                 <option value="low price to high price">PRECIO: MENOR A MAYOR</option>

@@ -6,6 +6,7 @@ import Return from "../pages/policy/return/Return"
 import Privacy from "../pages/policy/privacy/Privacy"
 import Aboutus from "../pages/aboutus/Aboutus"
 import Tshirts from "../pages/products/tshirts/Tshirts"
+import Allproducts from "../pages/products/allproducts/Allproducts"
 
 
 const Routes = () => {
@@ -16,7 +17,7 @@ const Routes = () => {
                 <Route path="/" element={<Home />}/>
 
                 <Route path="/productos">
-                  <Route index element={<Home />} />
+                  <Route index element={<Allproducts />} />
                   <Route path="remeras" element={<Tshirts />} />
                   <Route path=":producto" element={<Home />} />
                 </Route>

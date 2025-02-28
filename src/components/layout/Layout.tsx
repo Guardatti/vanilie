@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import { useLocation } from 'react-router-dom'
-
+import { AnimatePresence, easeInOut, motion } from 'framer-motion'
 
 interface LayoutProps {
     children: ReactNode,
@@ -20,9 +20,11 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
   return (
     <>
         <Navbar />
-        <div style={{marginTop: 80}}>
-          {children}
-        </div>
+        <AnimatePresence mode='wait'>
+          <motion.div style={{marginTop: 80}} initial={{opacity: 0, y: '-30vh'}} animate={{opacity: 1, y: 0}} transition={{duration: 1, ease: easeInOut}} exit={{opacity: 0, x: '1000vw'}} key={pathname} layout>
+            {children}
+          </motion.div>
+        </AnimatePresence>
         <Footer />
     </>
   )

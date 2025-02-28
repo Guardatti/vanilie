@@ -12,9 +12,9 @@ import Contact from '../contact/Contact';
 
 const Navbar: React.FC = () => {
  
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const [contactOpen, setContactOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState<boolean>(false)
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
