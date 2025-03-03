@@ -3,6 +3,8 @@ import '../products.css'
 import { products } from '../../../components/data/products'
 import { motion } from 'framer-motion'
 import { formatPrice } from '../../../utils/formatPrice'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/cart/cartSlice'
 
 
 const Allproducts: React.FC = () => {
@@ -12,6 +14,8 @@ const Allproducts: React.FC = () => {
     const [filterPrice, setFilterPrice] = useState<string>('default')
 
     const [category, setCategory] = useState<string>('default')
+
+    const dispatch = useDispatch()
 
     const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setFilter(event.target.value)
@@ -44,12 +48,12 @@ const Allproducts: React.FC = () => {
             <div className='container-general-title-filter'>
                 <h1 className='title-products'>PRODUCTOS</h1>
                 <div className='filter-products'>
-                    <select className='select-general' value={filter} onChange={handleChangeFilter}>
+                    <select className='select-general-all-products' value={filter} onChange={handleChangeFilter}>
                         <option value="default">HOMBRE Y MUJER</option>
                         <option value="male">HOMBRE</option>
                         <option value="famele">MUJER</option>
                     </select>
-                    <select className='select-general' value={category} onChange={handleChangeCategory}>
+                    <select className='select-general-all-products' value={category} onChange={handleChangeCategory}>
                         <option value="default" hidden>CATEGORIA</option>
                         <option value="default">TODAS</option>
                         <option value="tshirts">REMERAS</option>
@@ -65,7 +69,7 @@ const Allproducts: React.FC = () => {
                         <option value="sets">CONJUNTOS</option>
                         <option value="wallets">CARTERAS</option>
                     </select>
-                    <select className='select-general' value={filterPrice} onChange={handleChangeFilterPrice}>
+                    <select className='select-general-all-products' value={filterPrice} onChange={handleChangeFilterPrice}>
                         <option value="default" hidden>FILTRAR</option>
                         <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
                         <option value="low price to high price">PRECIO: MENOR A MAYOR</option>
@@ -86,7 +90,12 @@ const Allproducts: React.FC = () => {
                         <span>{formatPrice(product.price)}</span>
                     </div>
                     <div className='container-product-bot'>
-                        <motion.button className='button-product' whileTap={{scale: 0.95}}>COMPRAR</motion.button>
+                        <motion.button
+                        className='button-product' whileTap={{scale: 0.95}}
+                        onClick={() => dispatch(addToCart({id: product.id, title: product.title, img: product.img, category: product.category, price: product.price, sex: product.sex}))}
+                        >
+                            COMPRAR
+                        </motion.button>
                     </div>
                 </div>
                 ))
