@@ -38,7 +38,7 @@ const Tshirts: React.FC = () => {
                 <option value="famele">MUJER</option>
               </select>
               <select className='select-general' value={filterPrice} onChange={handleChangeFilterPrice}>
-                <option value="default">FILTRAR</option>
+                <option value="default" hidden>FILTRAR</option>
                 <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
                 <option value="low price to high price">PRECIO: MENOR A MAYOR</option>
               </select>

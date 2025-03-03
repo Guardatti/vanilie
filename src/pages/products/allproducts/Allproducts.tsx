@@ -50,7 +50,8 @@ const Allproducts: React.FC = () => {
                         <option value="famele">MUJER</option>
                     </select>
                     <select className='select-general' value={category} onChange={handleChangeCategory}>
-                        <option value="default">CATEGORIA</option>
+                        <option value="default" hidden>CATEGORIA</option>
+                        <option value="default">TODAS</option>
                         <option value="tshirts">REMERAS</option>
                         <option value="musculars">MUSCULOSAS</option>
                         <option value="pants">PANTALONES</option>
@@ -65,7 +66,7 @@ const Allproducts: React.FC = () => {
                         <option value="wallets">CARTERAS</option>
                     </select>
                     <select className='select-general' value={filterPrice} onChange={handleChangeFilterPrice}>
-                        <option value="default">FILTRAR</option>
+                        <option value="default" hidden>FILTRAR</option>
                         <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
                         <option value="low price to high price">PRECIO: MENOR A MAYOR</option>
                     </select>

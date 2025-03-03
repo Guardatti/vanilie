@@ -19,10 +19,10 @@ export const products: Images[] = [
     },
     {
         id: 2,
-        title: '',
+        title: 'REMERA CHERRY',
         img: '/tshirts/30.avif',
         category: 'tshirts',
-        price: 4,
+        price: 12200,
         sex: 'famele',
     },
     {
@@ -35,10 +35,10 @@ export const products: Images[] = [
     },
     {
         id: 4,
-        title: '',
+        title: ' REMERA CORTA CON LAZO BLANCO',
         img: '/tshirts/29.avif',
         category: 'tshirts',
-        price: 4,
+        price: 14600,
         sex: 'famele',
     },
     {
@@ -51,10 +51,10 @@ export const products: Images[] = [
     },
     {
         id: 6,
-        title: '',
+        title: 'REMERA CORTA NEGRA LISA',
         img: '/tshirts/28.avif',
         category: 'tshirts',
-        price: 4,
+        price: 13300,
         sex: 'famele',
     },
     {
@@ -67,10 +67,10 @@ export const products: Images[] = [
     },
     {
         id: 8,
-        title: '',
+        title: 'REMERA CORTA VERDE',
         img: '/tshirts/27.avif',
         category: 'tshirts',
-        price: 4,
+        price: 13300,
         sex: 'famele',
     },
     {
@@ -83,10 +83,10 @@ export const products: Images[] = [
     },
     {
         id: 10,
-        title: '',
+        title: 'REMERA CORTA MARRON',
         img: '/tshirts/26.avif',
         category: 'tshirts',
-        price: 4,
+        price: 13300,
         sex: 'famele',
     },
     {
@@ -94,15 +94,15 @@ export const products: Images[] = [
         title: 'REMERA CASUAL MANFINITY HOMME NEGRA NEW JERSEY 93',
         img: '/tshirts/6.avif',
         category: 'tshirts',
-        price: 24000,
+        price: 15300,
         sex: 'male',
     },
     {
         id: 12,
-        title: '',
+        title: 'REMERA CORTA BEIGE',
         img: '/tshirts/25.avif',
         category: 'tshirts',
-        price: 4,
+        price: 12500,
         sex: 'famele',
     },
     {
@@ -115,10 +115,10 @@ export const products: Images[] = [
     },
     {
         id: 14,
-        title: '',
+        title: 'REMERA CORTA NEGRA',
         img: '/tshirts/24.avif',
         category: 'tshirts',
-        price: 4,
+        price: 15000,
         sex: 'famele',
     },
     {
@@ -131,10 +131,10 @@ export const products: Images[] = [
     },
     {
         id: 16,
-        title: '',
+        title: 'REMERA CORTA ENERGETIC 1998 NEW SEASON',
         img: '/tshirts/23.avif',
         category: 'tshirts',
-        price: 4,
+        price: 15000,
         sex: 'famele',
     },
     {
@@ -147,10 +147,10 @@ export const products: Images[] = [
     },
     {
         id: 18,
-        title: '',
+        title: 'REMERA CORTA ENERGETIC FLYING EAGLE',
         img: '/tshirts/22.avif',
         category: 'tshirts',
-        price: 4,
+        price: 15000,
         sex: 'famele',
     },
     {
@@ -163,10 +163,10 @@ export const products: Images[] = [
     },
     {
         id: 20,
-        title: '',
+        title: 'REMERA CORTA HEART & WINGS',
         img: '/tshirts/21.avif',
         category: 'tshirts',
-        price: 4,
+        price: 13600,
         sex: 'famele',
     },
     {
