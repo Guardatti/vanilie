@@ -1,0 +1,124 @@
+.container-cart{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    height: calc(100vh - 80px);
+    width: 600px;
+    background-color: #ffffff;
+    border-top: 1px solid #000000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    transition: all 0.4s ease-in-out;
+    @media (min-width: 320px) and (max-width: 575px) {
+        width: 100%;
+    }
+    @media (min-width: 576px) and (max-width: 1050px) {
+        width: 500px;
+    }
+}
+
+.container-cart.open{
+    transform: translateX(150%);
+}
+
+.container-cart.close{
+    transform: translateX(0%);
+}
+
+.container-cart-title{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-cart-title h2{
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.container-general-modalcard{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+    max-height: calc(100vh - 300px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.container-empty{
+    padding-top: 30px;
+}
+
+.container-empty-danger-p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.container-empty p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.danger{
+    font-size: 16px;
+    color: #000000;
+}
+
+.container-cart-price-and-buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: auto;
+    width: 100%;
+    min-height: 110px;
+}
+
+.container-cart-total-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 30px;
+    width: 90%;
+}
+
+.cart-total-title{
+    font-size: 16px;
+}
+
+.cart-total-price{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.container-cart-buttons{
+    width: 90%;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-cart-buttons button{
+    width: 150px;
+    height: 30px;
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}

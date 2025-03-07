@@ -3,8 +3,8 @@ import '../products.css'
 import { products } from '../../../components/data/products'
 import { motion } from 'framer-motion'
 import { formatPrice } from '../../../utils/formatPrice'
-import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
 
 const Allproducts: React.FC = () => {
@@ -15,7 +15,13 @@ const Allproducts: React.FC = () => {
 
     const [category, setCategory] = useState<string>('default')
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
+
+    const cart = useAppSelector(state => state.cart.cart)
+
+    const totalQuantity = cart.reduce((total, quantity) => {
+        return total += quantity.quantity
+    }, 0)
 
     const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setFilter(event.target.value)
@@ -92,7 +98,8 @@ const Allproducts: React.FC = () => {
                     <div className='container-product-bot'>
                         <motion.button
                         className='button-product' whileTap={{scale: 0.95}}
-                        onClick={() => dispatch(addToCart({id: product.id, title: product.title, img: product.img, category: product.category, price: product.price, sex: product.sex}))}
+                        disabled={totalQuantity >= 9}
+                        onClick={() => dispatch(addToCart({id: product.id, title: product.title, img: product.img, category: product.category, price: product.price, sex: product.sex, quantity: 1}))}
                         >
                             COMPRAR
                         </motion.button>

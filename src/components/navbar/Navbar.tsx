@@ -7,28 +7,47 @@ import { FaUser } from "react-icons/fa";
 import { GrSearch } from "react-icons/gr";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Contact from '../contact/Contact';
+import { useAppSelector } from '../../redux/hooks';
+import ModalCart from '../cart/ModalCart';
 
 
 
 const Navbar: React.FC = () => {
- 
+
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const [contactOpen, setContactOpen] = useState<boolean>(false)
 
+  const [cartOpen, setCartOpen] = useState<boolean>(false)
+
+  const cart = useAppSelector(state => state.cart.cart)
+
+  const totalQuantity = cart.reduce((total, quantity) => {
+    return total += quantity.quantity
+  }, 0)
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     setContactOpen(false);
+    setCartOpen(false);
   }
 
   const toggleContact = () => {
     setContactOpen(!contactOpen);
     setMenuOpen(false);
+    setCartOpen(false);
+  }
+
+  const toggleCart = () => {
+    setCartOpen(!cartOpen);
+    setMenuOpen(false);
+    setContactOpen(false);
   }
 
   const closeMenus = () => {
     setMenuOpen(false);
     setContactOpen(false);
+    setCartOpen(false)
   }
 
   return (
@@ -64,14 +83,16 @@ const Navbar: React.FC = () => {
       <div className='container-icons'>
         <GrSearch className='searchicon'/>
         <FaUser className='usericon'/>
-        <FaShoppingBag className='bagicon'/>
+        <FaShoppingBag className='bagicon' onClick={toggleCart}/>
         {/*Poner máximo de compra 9 productos ya que el número 10 descentraliza el numero de la bolsa*/}
-        <span className='cart-bubble'>0</span>
+        <span className='cart-bubble'>{totalQuantity}</span>
       </div>
 
       <Contact isOpen={contactOpen} setIsOpen={setContactOpen}/>
 
-      {((menuOpen) || (contactOpen)) && <div className='overlay' onClick={closeMenus}/>}
+      <ModalCart isOpen={cartOpen} setIsOpen={setCartOpen}/>
+
+      {((menuOpen) || (contactOpen) || (cartOpen)) && <div className='overlay' onClick={closeMenus}/>}
 
     </header>
   )

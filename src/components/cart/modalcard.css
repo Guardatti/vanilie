@@ -1,0 +1,69 @@
+.container-modalcard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding-top: 10px;
+}
+
+.container-card-img{
+    width: 20%;
+    height: 100px;
+}
+
+.container-card-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.container-card-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    height: 100px;
+}
+
+.container-card-info p{
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.container-card-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+    gap: 10px;
+}
+
+.icon-trash{
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container-card-quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-card-quantity button{
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.container-card-price span{
+    font-size: 13px;
+    text-align: center;
+}
