@@ -23,9 +23,13 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
       return total += quantity.quantity
     }, 0)
 
-    const totalPrice = cart.reduce((total, price) => {
-      return total += price.price
+    const totalPrice = cart.reduce((total, item) => {
+      return (total += item.price * item.quantity)
     }, 0)
+
+    const toggleCart = () => {
+      setIsOpen(!isOpen)
+    }
 
   return (
     <div className={`container-cart ${isOpen ? "close" : "open"}`}>
@@ -62,7 +66,7 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
         </div>
         <div className='container-cart-buttons'>
           <motion.button whileTap={{scale: 0.95}} onClick={() => dispatch(clearCart())}>VACIAR</motion.button>
-          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0}>COMPRAR</motion.button>
+          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => toggleCart()}>COMPRAR</motion.button>
         </div>
       </div>
     </div>
