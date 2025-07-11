@@ -1,11 +1,27 @@
-interface ContactForm{
-    name: string,
+// ---
+
+interface loginForm {
     email: string,
-    message: string,
+    password: string,
 }
 
-export const initialValueContactForm: ContactForm = {
-    name: '',
+export const initialValueLogin: loginForm= {
     email: '',
-    message: '',
+    password: ''
+}
+
+// ---
+
+interface registerForm {
+    name: string,
+    surname: string,
+    email: string,
+    password: string,
+}
+
+export const initialValueRegiter: registerForm = {
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
 }

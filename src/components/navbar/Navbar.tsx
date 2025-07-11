@@ -6,7 +6,6 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { GrSearch } from "react-icons/gr";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import Contact from '../contact/Contact';
 import { useAppSelector } from '../../redux/hooks';
 import ModalCart from '../cart/ModalCart';
 
@@ -15,8 +14,6 @@ import ModalCart from '../cart/ModalCart';
 const Navbar: React.FC = () => {
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
-  const [contactOpen, setContactOpen] = useState<boolean>(false)
 
   const [cartOpen, setCartOpen] = useState<boolean>(false)
 
@@ -28,25 +25,16 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    setContactOpen(false);
-    setCartOpen(false);
-  }
-
-  const toggleContact = () => {
-    setContactOpen(!contactOpen);
-    setMenuOpen(false);
     setCartOpen(false);
   }
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
     setMenuOpen(false);
-    setContactOpen(false);
   }
 
   const closeMenus = () => {
     setMenuOpen(false);
-    setContactOpen(false);
     setCartOpen(false)
   }
 
@@ -74,9 +62,10 @@ const Navbar: React.FC = () => {
         </div>
         <Link to='/hombre' className='link' onClick={closeMenus}>HOMBRE</Link>
         <Link to='/mujer' className='link' onClick={closeMenus}>MUJER</Link>
+        <Link to='/contacto' className='link' onClick={closeMenus}>CONTACTO</Link>
         <Link to='/sobre-nosotros' className='link' onClick={closeMenus}>SOBRE NOSOTROS</Link>
-        <span className='link' style={{cursor: 'pointer'}} onClick={toggleContact}>CONTACTO</span>
-        <Link to='/iniciar-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
+        
+        <Link to='/inicio-de-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
         <Link to='/buscar' className='link - link_search' onClick={closeMenus}>BUSCAR</Link>
 
       </nav>
@@ -88,11 +77,10 @@ const Navbar: React.FC = () => {
         <span className='cart-bubble'>{totalQuantity}</span>
       </div>
 
-      <Contact isOpen={contactOpen} setIsOpen={setContactOpen}/>
 
       <ModalCart isOpen={cartOpen} setIsOpen={setCartOpen}/>
 
-      {((menuOpen) || (contactOpen) || (cartOpen)) && <div className='overlay' onClick={closeMenus}/>}
+      {((menuOpen) || (cartOpen)) && <div className='overlay' onClick={closeMenus}/>}
 
     </header>
   )

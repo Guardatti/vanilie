@@ -1,7 +1,13 @@
 import * as Yup from 'yup'
 
-export const validationSchemaContactForm = Yup.object({
-    name: Yup.string().trim().min(2, 'Ingrese un nombre inválido').required(''),
-    email: Yup.string().email('Ingrese un email válido').required(''),
-    message: Yup.string().min(10, 'Ingrese un mensaje válido [Debe contener al menos 10 caracteres]').required(''),
+export const validationSchemaLogin = Yup.object({
+    email: Yup.string().required(''),
+    password: Yup.string().required(''),
+})
+
+export const validationSchemaRegister = Yup.object({
+    name: Yup.string().required(''),
+    surname: Yup.string().required(''),
+    email: Yup.string().email('Ingrese un email válido'),
+    password: Yup.string().min(6, 'La contraseña debe contener al menos 6 caracteres.').required('')
 })
