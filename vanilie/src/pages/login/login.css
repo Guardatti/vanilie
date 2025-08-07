@@ -1,0 +1,96 @@
+.container-general-login{
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    background: url('../../../public/img_bg_r_l/1.webp') center / cover no-repeat;
+}
+
+.container-login{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 7rem 0 7rem 0;
+    @media (min-width: 320px) and (max-width: 500px){
+        width: 100%;
+    }
+}
+
+.container-login-form{
+    width: 400px;
+    height: 375px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #b4b4b4;
+}
+
+.container-login-form-title{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-login-form-title h2{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.container-login-form-inputs{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 1rem;
+}
+
+.container-login-label-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.login-input{
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #b4b4b4;
+    width: 80%;
+    padding-left: 0.5rem;
+    height: 40px;
+}
+
+.login-button-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    gap: 30px;
+}
+
+.container-login-label-input button{
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-label-link{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-link{
+    color: rgb(43, 43, 255);
+}

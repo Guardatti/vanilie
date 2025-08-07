@@ -1,0 +1,43 @@
+.search-poducts-form{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+.search-poducts-form.open{
+    height: 50px;
+}
+
+.search-poducts-form.close{
+    height: 0px;
+}
+
+.search-poducts-form input{
+    background-color: transparent;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #8d8d8d;
+    width: 50%;
+    padding-left: 0.5rem;
+}
+
+.search-poducts-form button{
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

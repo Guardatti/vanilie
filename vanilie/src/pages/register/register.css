@@ -1,0 +1,103 @@
+.container-general-register{
+    min-height: 100dvh;
+    background: url('../../../public/img_bg_r_l/1.webp') center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+}
+
+.container-register{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 7rem 0 7rem 0;
+    @media (min-width: 320px) and (max-width: 500px){
+        width: 100%;
+    }
+}
+
+.container-register-form{
+    width: 400px;
+    height: 525px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #b4b4b4;
+}
+
+.container-register-form-title{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-register-form-title h2{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.container-register-form-inputs{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 1rem;
+}
+
+.container-register-label-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.register-input{
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #8d8d8d;
+    width: 80%;
+    padding-left: 0.5rem;
+    height: 40px;
+}
+
+.register-form-errorMessage{
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.register-button-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    gap: 30px;
+}
+
+.container-register-label-input button{
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-label-link{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.register-link{
+    color: rgb(43, 43, 255);
+}

@@ -1,0 +1,38 @@
+.container-aboutus{
+    padding: 30px 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: 100dvh;
+    width: 1024px;
+    @media (min-width: 320px) and (max-width: 1050px){
+        width: 100%;
+    }
+}
+
+.container-aboutus-1, .container-aboutus-2, .container-aboutus-3, .container-aboutus-4{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-aboutus-4{
+    padding-bottom: 30px;
+}
+
+.container-title-aboutus h1{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.container-title-aboutus span{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container-aboutus-1 p, .container-aboutus-2 p, .container-aboutus-3 p, .container-aboutus-4 p{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
