@@ -30,9 +30,9 @@ const Contact: React.FC = () => {
           toast.success('Mensaje enviado con éxito', {
           position: "bottom-center",
           autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
           draggable: true,
           progress: undefined,
           theme: "dark",

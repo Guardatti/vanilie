@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
           <h2>CATEGORÍAS</h2>
           <div className='categories'>
             <Link to='/productos' className='links'>Productos</Link>
-            <Link to='/hombre' className='links'>Hombre</Link>
-            <Link to='/mujer' className='links'>Mujer</Link>
+            <Link to='/productos/genero/hombre' className='links'>Hombre</Link>
+            <Link to='/productos/genero/mujer' className='links'>Mujer</Link>
           </div>
         </div>
 
@@ -28,9 +28,9 @@ const Footer: React.FC = () => {
           <h2>INFORMACIÓN</h2>
           <div className='information'>
             <Link to='/sobre-nosotros' className='links'>Sobre nosotros</Link>
-            <p className='information-p'>5493510000000</p>
+            <p className='information-p' style={{fontFamily: 'none'}}>5493510000000</p>
             <p className='information-p'>vanilieclothing@gmail.com</p>
-            <p className='information-p'>José Antonio de Sucre 2247</p>
+            <p className='information-p'>José Antonio de Sucre <span style={{fontFamily: 'none'}}>2247</span></p>
           </div>
         </div>
 

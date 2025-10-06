@@ -15,25 +15,34 @@
     font-size: 24px;
     cursor: pointer;
     color: #000000;
-    display: none;
-    @media (min-width: 320px) and (max-width: 1050px){
-        display: flex;
-        margin-left: 1rem;
-    }
+    margin-left: 1rem;
 }
 
 .title{
     font-size: 50px;
-    font-weight: 1000;
+    font-weight: 400;
     color: #000000;
-    margin-left: 1rem;
+    margin-left: 5rem;
+    @media (min-width: 320px) and (max-width: 1050px){
+        margin-left: 1rem;
+    }
 }
 
 .navbar{
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    left: 0;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    width: 500px;
+    height: calc(100vh - 80px);
+    gap: 0px;
+    z-index: 2;
+    border-top: 1px solid #000000;
+    overflow-y: auto;
     transition: all 0.4s ease-in-out;
     @media (min-width: 320px) and (max-width: 575px){
         background-color: #ffffff;
@@ -48,107 +57,69 @@
         border-top: 1px solid #000000;
         overflow-y: auto;
     }
-    @media (min-width: 576px) and (max-width: 1050px) {
-        background-color: #ffffff;
-        position: absolute;
-        top: 100%;
-        flex-direction: column;
-        justify-content: start;
-        width: 500px;
-        height: calc(100vh - 80px);
-        gap: 0px;
-        z-index: 2;
-        border-top: 1px solid #000000;
-        overflow-y: auto;
-    }
 }
 
 .navbar.close{
-    @media (min-width: 320px) and (max-width: 1050px){
-        transform: translatex(0%);
-    }
+    transform: translatex(0%);
 }
 
 .navbar.open{
-    @media (min-width: 320px) and (max-width: 1050px){
-        transform: translateX(-150%);
-    }
+    transform: translateX(-150%);
 }
 
 .container-navbar{
-    &:hover{
-        .dropdownmenu{
-            max-height: 300px;
-            transition: all 0.5s ease-in;
-        }
-    }
-    @media (min-width: 320px) and (max-width: 1050px){
-        width: 100%;
-        &:hover{
-            .dropdownmenu{
-                max-height: 600px;
-                transition: all 0.3s ease-in;
-            }
-        }
-    }
+    width: 100%;
+}
+
+.container-link-and-arrow{
+    display: flex;
+    align-items: center;
+}
+
+.mdkeyboardarrowdown {
+    cursor: pointer;
+    height: 49px;
+    border-bottom: 1px solid #000000;
 }
 
 .dropdownmenu{
-    position: absolute;
-    top: 80px;
-    right: 0%;
+    position: relative;
+    top: 0%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
     overflow: hidden;
     max-height: 0px;
     transition: all 0.5s ease-out;
     background-color: #ffffff;
     z-index: 2;
-    @media (min-width: 320px) and (max-width: 1050px) {
-        position: relative;
-        width: 100%;
-        top: 0%;
-        flex-direction: column;
-        gap: 0px;
-        flex-wrap: nowrap;
-        transition: all 0.3s ease-out;
-    }
+}
+
+.dropdownmenu.open{
+    max-height: 1000px;
+    transition: all 0.5s ease-in;
 }
 
 .link_dropdownmenu{
     font-size: 13px;
-    font-weight: 400;
     color: #000000;
     padding: 10px;
-    @media (min-width: 320px) and (max-width: 1050px){
-        border-bottom: 1px solid #000000;
-        width: 100%;
-        padding-left: 1rem;
-    }
+    padding-left: 1rem;
+    width: 100%;
+    border-bottom: 1px solid #000000;
 }
 
 .link{
     font-size: 13px;
-    font-weight: 500;
     color: #000000;
-    padding: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media (min-width: 320px) and (max-width: 1050px){
-        border-bottom: 1px solid #000000;
-        width: 100%;
-        justify-content: space-between;
-        padding-left: 1rem;
-        padding: 15px;
-    }
+    padding: 15px;
+    border-bottom: 1px solid #000000;
+    width: 100%;
 }
 
-.link_user, .link_search{
+.link_user, .link_search, .link_perfil, .link_pedidos{
     display: none;
     @media (min-width: 320px) and (max-width: 1050px) {
         display: flex;
@@ -159,8 +130,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
     gap: 0.5rem;
+    margin-right: 1rem;
 }
 
 .searchicon, .usericon, .bagicon{
@@ -178,12 +149,19 @@
 
 .cart-bubble{
     position: absolute;
-    top: 37px;
-    right: 28px;
+    top: 40px;
+    right: 10px;
     color: #ffffff;
-    font-size: 10px;
+    background-color: #000000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
     font-weight: 600;
-    text-align: center;
+    font-family: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .overlay{
@@ -195,3 +173,4 @@
     height: 100vh;
     z-index: 1;
 }
+

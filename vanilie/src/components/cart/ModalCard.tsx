@@ -2,29 +2,24 @@ import React from 'react'
 import './modalcard.css'
 import { formatPrice } from '../../utils/formatPrice'
 import { GoTrash } from "react-icons/go";
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { addToCart, decraseToCart, removeToCart } from '../../redux/cart/cartSlice';
-import { useSelector } from 'react-redux';
+
 
 interface Props{
     id: number,
     title: string,
+    description: string,
     img: string,
-    category: string,
+    brand: string,
     price: number,
     sex: string,
     quantity: number,
 }
 
-const ModalCard: React.FC<Props> = ({id, title, img, category, price, sex, quantity}) => {
+const ModalCard: React.FC<Props> = ({id, title, description, img, brand, price, sex, quantity}) => {
 
     const dispatch = useAppDispatch();
-
-    const cart = useAppSelector(state => state.cart.cart)
-
-    const totalQuantity = cart.reduce((total, quantity) => {
-        return total += quantity.quantity
-    }, 0)
 
     return (
     <div className='container-modalcard' key={id} >
@@ -39,7 +34,7 @@ const ModalCard: React.FC<Props> = ({id, title, img, category, price, sex, quant
             <div className='container-card-quantity'>
                 <button onClick={() => dispatch(decraseToCart(id))}>-</button>
                 <span>{quantity}</span>
-                <button disabled={totalQuantity >= 9} onClick={() => dispatch(addToCart({id, title, img, category, price, sex, quantity}))}>+</button>
+                <button onClick={() => dispatch(addToCart({id, title, description ,img, brand, price, sex, quantity}))}>+</button>
             </div>
             <span>{formatPrice(price)}</span>
         </div>

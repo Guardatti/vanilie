@@ -32,7 +32,6 @@
 
 .container-login-form-title h2{
     font-size: 28px;
-    font-weight: 500;
 }
 
 .container-login-form-inputs{
@@ -91,6 +90,11 @@
     gap: 5px;
 }
 
+.login-label-link label{
+    font-weight: 300;
+}
+
 .login-link{
     color: rgb(43, 43, 255);
+    font-weight: 300;
 }

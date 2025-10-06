@@ -10,35 +10,34 @@ const Return: React.FC = () => {
           <h1>Política de devolución</h1>
         </div>
         <p>
-          Realizar cambios es muy sencillo, podés acercarte a nuestro local con el producto en perfecto estado y la factura y/o ticket dentro de los 30 días corridos posteriores a la recepción del pedido,
-          o bien , contactate con nosotros a traves de nuestro whatsapp.
+          Realizar cambios es muy sencillo. Podés acercarte a nuestro local con el perfume en perfecto estado, cerrado, sin uso y con su envoltorio original, junto con la factura y/o ticket dentro de los 30 días corridos posteriores a la recepción del pedido, o bien contactarte con nosotros a través de nuestro WhatsApp.
         </p>
       </div>
 
       <div className='container-policy-3'>
         <div className='container-title-policy'>
-          <span>Garantías</span>
+          <h2>Garantías</h2>
         </div>
         <p>
-          Todos los productos que comercializamos poseen garantía por falla, provista por el fabricante o proveedor de cada marca, que son los únicos responsables directos. 
-          Ante eventuales fallas, Vanilie actúa como intermediario entre el cliente y el fabricante/proveedor, enviando el artículo al servicio de garantía correspondiente. 
-          Es imprescindible contar con la factura o ticket original de compra, y enviar el producto completo (ej.: los calzados con su caja, cordones, plantillas, etc.) y en condiciones de higiene.
+          Todos los perfumes que comercializamos poseen garantía por falla de fabricación, provista por el fabricante o proveedor de cada marca, quienes son los únicos responsables directos. Ante eventuales inconvenientes, Vanilie actúa como intermediario entre el cliente y el fabricante/proveedor, enviando el artículo al servicio de garantía correspondiente. Es imprescindible contar con la factura o ticket original de compra, y enviar el producto completo (frasco, tapa, estuche, celofán si corresponde) en condiciones de higiene.
         </p>
         <p>
-          La garantía de indumentaria cubre los defectos por mano de obra y materiales, pero no cubre los daños causados por accidentes, cuidado inadecuado, negligencia, el uso y desgaste normal, 
-          o la descomposición natural de colores y materiales a través del tiempo, la exposición o el uso prolongado
+          La garantía no cubre daños ocasionados por uso indebido, golpes, exposición a altas temperaturas, humedad, contacto con el sol, almacenamiento inadecuado, o por el desgaste natural de la fragancia, color o envase a través del tiempo.
         </p>
         <p>
-          Si un producto adquirido en Vanilie presenta defectos después de la inspección por un técnico de garantía, Vanilie reparará o reemplazará el producto por un modelo comparable existente a criterio del técnico. 
-          Vanilie no es responsable por cualquier daño, pérdida y/o los costos incurridos como resultado de la pérdida o el uso de nuestros productos.
+          Si un perfume adquirido en Vanilie presenta defectos después de la inspección por un técnico de garantía, Vanilie gestionará la reparación o reemplazo del producto por un modelo comparable existente, a criterio del fabricante/proveedor. Vanilie no es responsable por cualquier daño, pérdida y/o costos incurridos como resultado de la pérdida o del uso de los productos.
+        </p>
+      </div>
+
+      <div className='container-policy-4'>
+        <div className='container-title-policy'>
+          <h3>Aclaraciones importantes</h3>
+        </div>
+        <p>
+          En caso de que tu producto no cumpla con los criterios de nuestra política de cambios y garantías, te informaremos por correo electrónico la razón por la cual no procede, y el producto será devuelto a la dirección de envío inicial sin costo adicional.
         </p>
         <p>
-          En caso de que tu producto no cumpla con los criterios de nuestra política de cambios y garantías, te informaremos con un correo electrónico la razón por la cual no procede el cambio o la garantía y 
-          el producto será devuelto a la dirección de envío inicial sin costo de envío adicional.
-        </p>
-        <p>
-          El tiempo estimado para la realización de un cambio por producto fallado o mal enviado puede comprender hasta 30 días. 
-          Debe tenerse en cuenta que, al igual que las entregas, las devoluciones pueden demorar hasta 10 días hábiles.
+          El tiempo estimado para la realización de un cambio por producto fallado o mal enviado puede comprender hasta 30 días. Debe tenerse en cuenta que, al igual que las entregas, las devoluciones pueden demorar hasta 10 días hábiles.
         </p>
       </div>
 

@@ -2,7 +2,7 @@
     padding: 30px 1rem 0 1rem;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
     min-height: 100dvh;
     width: 1024px;
     @media (min-width: 320px) and (max-width: 1050px){
@@ -23,12 +23,10 @@
 
 .container-title-aboutus h1{
     font-size: 28px;
-    font-weight: 500;
 }
 
-.container-title-aboutus span{
-    font-size: 20px;
-    font-weight: 500;
+.container-title-aboutus h2{
+    font-size: 24px;
 }
 
 .container-aboutus-1 p, .container-aboutus-2 p, .container-aboutus-3 p, .container-aboutus-4 p{

@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    font-family: 'Roboto';
+    font-family: 'Playfair Display';
+    font-weight: 500;
   }
 `
 

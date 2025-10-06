@@ -32,7 +32,6 @@
 
 .container-register-form-title h2{
     font-size: 28px;
-    font-weight: 500;
 }
 
 .container-register-form-inputs{
@@ -65,7 +64,6 @@
 .register-form-errorMessage{
     color: red;
     font-size: 14px;
-    font-weight: 500;
     text-align: center;
 }
 
@@ -98,6 +96,11 @@
     gap: 5px;
 }
 
+.register-label-link label{
+    font-weight: 300;
+}
+
 .register-link{
     color: rgb(43, 43, 255);
+    font-weight: 300;
 }

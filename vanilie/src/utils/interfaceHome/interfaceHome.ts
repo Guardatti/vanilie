@@ -1,33 +1,23 @@
-interface HomeImages {
+interface IHome {
     id: number,
-    url: string,
-    alt: string,
-    path: string,
+    video_src: string,
+    alt: string
 }
 
-export const homeImages: HomeImages[] = [
+export const principalHome: IHome[] = [
     {
         id: 1,
-        url: 'img_home/1.webp',
-        alt: 'Camisas',
-        path: '/productos/camisas',
+        video_src: '/img_home/miss_dior.mp4',
+        alt: 'Perfume Miss de Dior'
     },
     {
         id: 2,
-        url: 'img_home/2.webp',
-        alt: 'Pantalones',
-        path: '/productos/pantalones',
+        video_src: '/img_home/blue_chanel.mp4',
+        alt: 'Perfume Blue de Chanel'
     },
     {
         id: 3,
-        url: 'img_home/3.webp',
-        alt: 'Zapatillas',
-        path: '/productos/zapatillas',
-    },
-    {
-        id: 4,
-        url: 'img_home/4.webp',
-        alt: 'Carteras',
-        path: 'productos/carteras',
+        video_src: '/img_home/carolina_herrera_good_girl.mp4',
+        alt: 'Perfume Good Girl de Carolina Herrera'
     }
 ]

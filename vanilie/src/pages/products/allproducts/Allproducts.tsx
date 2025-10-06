@@ -1,112 +1,106 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../products.css'
 import { products } from '../../../components/data/products'
-import { motion } from 'framer-motion'
-import { formatPrice } from '../../../utils/formatPrice'
-import { addToCart } from '../../../redux/cart/cartSlice'
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { HiAdjustmentsHorizontal } from "react-icons/hi2";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/effect-fade';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
+import { imgByGender } from '../../../utils/interfaceCategoryProducts/interfaceCategoryProducts';
+import Pagination from '@mui/material/Pagination';
+import ScrollReveal from 'scrollreveal';
 
 
 const Allproducts: React.FC = () => {
+    const navigate = useNavigate();
 
-    const [filter, setFilter] = useState<string>('default')
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 30;
 
-    const [filterPrice, setFilterPrice] = useState<string>('default')
+    const offset = (currentPage - 1) * itemsPerPage;
+    const currentItems = products.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(products.length / itemsPerPage);
 
-    const [category, setCategory] = useState<string>('default')
+    const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+        setCurrentPage(value);
 
-    const dispatch = useAppDispatch()
-
-    const cart = useAppSelector(state => state.cart.cart)
-
-    const totalQuantity = cart.reduce((total, quantity) => {
-        return total += quantity.quantity
-    }, 0)
-
-    const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilter(event.target.value)
+        const productsContainer = document.querySelector('.container-general-title-filter');
+        if (productsContainer) {
+            productsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
-    const handleChangeFilterPrice = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilterPrice(event.target.value)
-    }
+    useEffect(() => {
+        setCurrentPage(1);
 
-    const handleChangeCategory = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setCategory(event.target.value)
-    }
-
-    const filterProducts =  products.filter((product) => (category == 'default' && filter === 'default')
-                            ||
-                            (category === 'default' && product.sex === filter)
-                            ||
-                            (product.category === category && filter === 'default')
-                            ||
-                            (product.category === category && product.sex === filter));
-
-    const sortedProducts =  filterPrice === 'high price to low price' ? [...filterProducts].sort((a, b) => b.price - a.price)
-                            :
-                            filterPrice === 'low price to high price' ? [...filterProducts].sort((a, b) => a.price - b.price)
-                            :
-                            [...filterProducts]
+        ScrollReveal().reveal(".container-products", {
+        origin: "bottom",
+        distance: "100px",
+        duration: 1000,
+        easing: "ease-in-out",
+        reset: false,
+        });
+    }, []);
 
     return (
         <div className='container-product-general'>
+            <div className='container-product-general-1'>
+                <Swiper
+                    effect={'fade'}
+                    modules={[EffectFade, Autoplay]}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+                    className="container-slide-img"
+                >
+                    {imgByGender.map((x) => (
+                        <SwiperSlide key={x.id}>
+                            <img src={x.img} alt={x.alt} className='img-slider-products'/>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+            <div className='container-product-general-2'>
+                <p>
+                    En Vanilie creemos que cada perfume es un reflejo de estilo y personalidad. Nuestras fragancias, para hombre y mujer, acompañan cada momento de la vida: desde la audacia y luminosidad femenina hasta la elegancia y distinción masculina. Cada aroma despierta emociones y se prolonga en una experiencia de belleza completa, diseñada para quienes buscan dejar huella.
+                </p>
+            </div>
             <div className='container-general-title-filter'>
-                <h1 className='title-products'>PRODUCTOS</h1>
-                <div className='filter-products'>
-                    <select className='select-general-all-products' value={filter} onChange={handleChangeFilter}>
-                        <option value="default">HOMBRE Y MUJER</option>
-                        <option value="male">HOMBRE</option>
-                        <option value="famele">MUJER</option>
-                    </select>
-                    <select className='select-general-all-products' value={category} onChange={handleChangeCategory}>
-                        <option value="default" hidden>CATEGORIA</option>
-                        <option value="default">TODAS</option>
-                        <option value="tshirts">REMERAS</option>
-                        <option value="musculars">MUSCULOSAS</option>
-                        <option value="pants">PANTALONES</option>
-                        <option value="bermudas">BERMUDAS</option>
-                        <option value="shoes">ZAPATILLAS</option>
-                        <option value="shirts">CAMISAS</option>
-                        <option value="tops">TOPS</option>
-                        <option value="skirts">POLLERAS</option>
-                        <option value="shorts">SHORTS</option>
-                        <option value="dresses">VESTIDOS</option>
-                        <option value="sets">CONJUNTOS</option>
-                        <option value="wallets">CARTERAS</option>
-                    </select>
-                    <select className='select-general-all-products' value={filterPrice} onChange={handleChangeFilterPrice}>
-                        <option value="default" hidden>FILTRAR</option>
-                        <option value="high price to low price">PRECIO: MAYOR A MENOR</option>
-                        <option value="low price to high price">PRECIO: MENOR A MAYOR</option>
-                    </select>
+                <h1>PRODUCTOS</h1>
+                <div className='container-icon-filter'>
+                    <span>Filtrar</span>
+                    <HiAdjustmentsHorizontal className='icon-adjustments'/>
                 </div>
             </div>
             <div className='container-products'>
-            {
-                sortedProducts.map((product) => (
-                <div className='container-product-img-info' key={product.id}>
-                    <div className='container-product-img'>
-                        <img className='img-product' src={product.img}/>
+                {currentItems.map((product) => (
+                    <div className='container-product-img-info' key={product.id}>
+                        <div className='container-product-img'>
+                            <img
+                                className='img-product'
+                                src={product.img}
+                                onClick={() => navigate(`/productos/id/${product.id}`)}
+                            />
+                        </div>
                     </div>
-                    <div className='container-product-top'>
-                        <span>{product.title}</span>
-                    </div>
-                    <div className='container-product-mid'>
-                        <span>{formatPrice(product.price)}</span>
-                    </div>
-                    <div className='container-product-bot'>
-                        <motion.button
-                        className='button-product' whileTap={{scale: 0.95}}
-                        disabled={totalQuantity >= 9}
-                        onClick={() => dispatch(addToCart({id: product.id, title: product.title, img: product.img, category: product.category, price: product.price, sex: product.sex, quantity: 1}))}
-                        >
-                            COMPRAR
-                        </motion.button>
-                    </div>
-                </div>
-                ))
-            }
+                ))}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '30px'}}>
+                <Pagination
+                    count={pageCount}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                    siblingCount={1}
+                    boundaryCount={1}
+                    sx={{
+                        "& .MuiPaginationItem-root.Mui-selected": {
+                            backgroundColor: "#000000",
+                            color: "white",
+                        },
+                    }}
+                />
             </div>
         </div>
     )

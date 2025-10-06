@@ -19,9 +19,9 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
   return (
     <>
         <Navbar />
-        <div style={{marginTop: 80}}>
+        <section style={{marginTop: '80px'}}>
           {children}
-        </div>
+        </section>
         <Footer />
     </>
   )

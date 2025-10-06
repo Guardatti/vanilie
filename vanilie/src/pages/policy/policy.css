@@ -2,7 +2,7 @@
     padding: 30px 1rem 0 1rem;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
     min-height: 100dvh;
     width: 1024px;
     @media (min-width: 320px) and (max-width: 1050px){
@@ -10,29 +10,32 @@
     }
 }
 
-.container-policy-2, .container-policy-3{
+.container-policy-2, .container-policy-3, .container-policy-4{
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
 }
 
-.container-policy-3{
-    padding-bottom: 30px;
-}
 
 .container-title-policy h1{
     font-size: 28px;
-    font-weight: 500;
 }
 
-.container-title-policy span{
+.container-title-policy h2{
     font-size: 20px;
-    font-weight: 500;
 }
 
-.container-policy-2 p, .container-policy-3 p{
+.container-title-policy h3{
+    font-size: 20px;
+}
+
+.container-policy-2 p, .container-policy-3 p, .container-policy-4 p{
     font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
+}
+
+.container-policy-4 {
+    padding-bottom: 30px;
 }

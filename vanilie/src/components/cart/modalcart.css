@@ -99,8 +99,8 @@
 }
 
 .cart-total-price{
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-family: none;
 }
 
 .container-cart-buttons{
@@ -121,4 +121,9 @@
     font-size: 14px;
     font-weight: 400;
     cursor: pointer;
+}
+
+.container-cart-buttons button:disabled {
+    background-color: #a5a5a5;
+    cursor: not-allowed;
 }

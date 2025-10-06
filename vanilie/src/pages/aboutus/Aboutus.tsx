@@ -10,58 +10,44 @@ const Aboutus: React.FC = () => {
             <h1>¿Quiénes somos?</h1>
         </div>
         <p>
-            Bienvenidos a Vanilie, una tienda de ropa que nació en 2024 con la misión de redefinir la moda contemporánea a través de prendas que combinan estilo, calidad y 
-            comodidad. Desde nuestros inicios, nos hemos dedicado a ofrecer colecciones cuidadosamente diseñadas para realzar la belleza y 
-            la personalidad de quienes eligen vestir con confianza y autenticidad.
+            Bienvenidos a Vanilie, un espacio creado en 2024 con la misión de acercarte las fragancias más exclusivas de las marcas más reconocidas del mundo. Nuestro propósito es acompañarte en cada momento de tu vida con aromas que transmiten personalidad, elegancia y distinción.
         </p>
         <p>
-            Nuestras colecciones abarcan tanto ropa de hombre como de mujer, combinando el estilo urbano con el estilo casual para adaptarse a distintos momentos del día y 
-            diferentes personalidades. Cada una de nuestras piezas es creada con un enfoque en la elegancia atemporal y la versatilidad, 
-            permitiendo que nuestros clientes construyan un guardarropa sofisticado y funcional. Nuestra inspiración proviene de la fusión entre lo clásico y lo moderno, 
-            capturando la esencia del diseño contemporáneo sin perder la esencia de la tradición textil..
+            Desde nuestros inicios, nos especializamos en ofrecer perfumes originales, cuidadosamente seleccionados para garantizar autenticidad, calidad y una experiencia única al elegir tu fragancia ideal.
         </p>
       </div>
 
       <div className='container-aboutus-2'>
         <div className='container-title-aboutus'>
-            <span>Nuestra filosofía</span>
+            <h2>Nuestra filosofía</h2>
         </div>
         <p>
-            En un mundo donde la moda rápida predomina, en Vanilie apostamos por la sostenibilidad y la producción ética. Nos esforzamos por trabajar con materiales de alta calidad, 
-            asegurando que cada prenda no solo sea hermosa, sino también duradera y responsable con el medio ambiente
-        </p>
+            Sabemos que un perfume no es solo un accesorio: es una extensión de ti mismo. Por eso, nos comprometemos a brindarte una experiencia de compra confiable, con productos de primera calidad y un servicio pensado para que encuentres la esencia que mejor te representa.        </p>
         <p>
-            Nuestro objetivo es que cada persona que entre a nuestra tienda se sienta identificada con nuestras prendas y encuentre piezas que realcen su personalidad, 
-            ya sea un conjunto urbano y moderno o un look casual y relajado.
-        </p>
+            Nuestro objetivo es que cada persona que visite nuestra tienda descubra la fragancia perfecta para expresar su estilo, ya sea un aroma fresco y casual, sensual y sofisticado o intenso y duradero.        </p>
       </div>
 
       <div className='container-aboutus-3'>
         <div className='container-title-aboutus'>
-            <span>Nuestra comunidad</span>
+            <h2>Nuestra comunidad</h2>
         </div>
         <p>
-            En Vanilie, no solo vendemos ropa, sino que también construimos una comunidad de personas apasionadas por la moda, la creatividad y la autoexpresión. 
-            Nos encanta conectar con nuestros clientes a través de nuestras redes sociales, compartir inspiración y escuchar sus opiniones para seguir mejorando y 
-            ofreciendo productos que realmente los representen.
-        </p>
-        <p>
-            Nuestro objetivo es que cada persona que entre a nuestra tienda se sienta identificada con nuestras prendas y encuentre piezas que realcen su personalidad, 
-            ya sea un conjunto urbano y moderno o un look casual y relajado.
+            En Vanilie no solo vendemos perfumes: construimos una comunidad de amantes de las fragancias. Nos encanta compartir inspiración, recomendaciones y tendencias a través de nuestras redes sociales, además de escuchar a nuestros clientes para seguir mejorando día a día.
         </p>
       </div>
 
       <div className='container-aboutus-4'>
         <div className='container-title-aboutus'>
-            <span>Únete a Vanilie</span>
+            <h2>Únete a Vanilie</h2>
         </div>
         <p>
-            Desde nuestros primeros pasos en 2024, hemos crecido gracias a la confianza y el apoyo de nuestros clientes. Nuestro compromiso es seguir evolucionando y 
-            ofreciendo prendas que combinen diseño, calidad y responsabilidad. Queremos que cada persona que elija Vanilie se sienta única y especial, 
-            sabiendo que viste una marca que pone el corazón en cada detalle.
+            Desde nuestro nacimiento en 2024, hemos crecido gracias a la confianza de quienes nos eligen para encontrar su fragancia favorita. Nuestro compromiso es seguir evolucionando para ofrecerte perfumes originales, de calidad y con el mejor servicio.
         </p>
         <p>
-            Te invitamos a ser parte de nuestra historia y a descubrir todo lo que tenemos para ofrecerte. Vanilie no es solo moda, es un estilo de vida. 
+            Te invitamos a ser parte de nuestra historia y descubrir el mundo de aromas que tenemos para ti.
+            En Vanilie, cada fragancia es un estilo de vida.
+        </p>
+        <p>
             ¡Bienvenidos a nuestra familia!
         </p>
       </div>

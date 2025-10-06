@@ -6,6 +6,7 @@ import ModalCard from './ModalCard';
 import { motion } from 'framer-motion'
 import { formatPrice } from '../../utils/formatPrice';
 import { clearCart } from '../../redux/cart/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 interface ContactProps {
@@ -14,6 +15,8 @@ interface ContactProps {
 }
 
 const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
+
+    const navigate = useNavigate()
 
     const cart = useAppSelector(state => state.cart.cart)
 
@@ -65,8 +68,8 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
           <span className='cart-total-price'>{formatPrice(totalPrice)}</span>
         </div>
         <div className='container-cart-buttons'>
-          <motion.button whileTap={{scale: 0.95}} onClick={() => dispatch(clearCart())}>VACIAR</motion.button>
-          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => toggleCart()}>COMPRAR</motion.button>
+          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => dispatch(clearCart())}>VACIAR</motion.button>
+          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => { navigate('/pago') ; toggleCart()}}>COMPRAR</motion.button>
         </div>
       </div>
     </div>

@@ -41,11 +41,26 @@ const Privacy: React.FC = () => {
 
       <div className='container-policy-3'>
         <div className='container-title-policy'>
-          <span>Seguridad y normas</span>
+          <h2>Seguridad y normas</h2>
         </div>
         <p>
         Todo nuestro equipamiento informático se encuentra en una zona de acceso restringido a personas previamente autorizadas. 
         Todos los accesos a la base de datos, tanto desde el Sitio como desde nuestras oficinas están regulados por mecanismos de seguridad informática que garantizan su integridad y privacidad.
+        </p>
+      </div>
+
+      <div className='container-policy-4'>
+        <div className='container-title-policy'>
+          <h3>Uso de cookies y tecnologías similares</h3>
+        </div>
+        <p>
+          El sitio de Vanilie puede utilizar cookies y tecnologías similares con el fin de mejorar la experiencia de navegación del Usuario, personalizar contenidos, facilitar el acceso a determinadas funcionalidades y obtener información estadística sobre la utilización de nuestros servicios.
+        </p>
+        <p>
+          Las cookies son pequeños archivos que se almacenan en el dispositivo del Usuario y que permiten reconocerlo en futuras visitas. En ningún caso las cookies utilizadas recopilan información personal sensible sin el consentimiento expreso del Usuario.
+        </p>
+        <p>
+          El Usuario puede configurar su navegador para rechazar las cookies o recibir una notificación antes de que sean almacenadas. No obstante, debe tener en cuenta que deshabilitarlas podría limitar algunas funciones del sitio y afectar la calidad de la experiencia de compra.
         </p>
       </div>
 
