@@ -1,20 +1,22 @@
-import express, {Express} from "express";
+import express, { Express } from "express";
 import { connectDB } from "../database/config";
 import cors from "cors";
-import productsRoutes from "../routes/products"
-import manRoute from "../routes/products"
-import womanRoute from "../routes/products"
+import authRoutes from "../routes/auth"
+
 
 
 export class Server {
 
     app: Express;
+    port: string | number | undefined;
+    authPath: string;
 
     constructor() {
         this.app = express();
+        this.port = process.env.PORT;
+        this.authPath = '/auth';
         this.connectionToDB();
         this.middelwares();
-        this.enableCors();
         this.routes();
     }
 
@@ -24,22 +26,17 @@ export class Server {
 
     middelwares(): void {
         this.app.use(express.json());
-    }
-
-    enableCors(): void {
         this.app.use(cors());
     }
 
     routes(): void {
-        this.app.use('/productos', productsRoutes)
-        this.app.use('/', manRoute)
-        this.app.use('/', womanRoute)
+        this.app.use(this.authPath, authRoutes)
     }
 
     listen(): void {
-        this.app.listen(8080, () => {
+        this.app.listen(this.port, () => {
 
-            console.log('Servidor corriendo en el puerto 8080');
+            console.log(`Servidor corriendo en el puerto ${this.port}`);
             
         })
     }

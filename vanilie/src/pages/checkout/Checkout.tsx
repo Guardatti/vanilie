@@ -47,7 +47,7 @@ const Checkout: React.FC = () => {
 
         } else if (name === 'cvc') {
 
-            const cleanedValue = value.replace(/\D/g, '').slice(0, 3);
+            const cleanedValue = value.replace(/\D/g, '').slice(0, 4);
 
             setState((prev) => ({ ...prev, [name]: cleanedValue }));
 

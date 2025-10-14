@@ -16,7 +16,11 @@ exports.connectDB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect("mongodb+srv://Guardatti:qI0zaHc4kkdeZZau@vanilie.a4kftd5.mongodb.net/");
+        const dbURL = process.env.DB_URL;
+        if (!dbURL) {
+            throw new Error('La URL no está correctamente definida en los .env');
+        }
+        yield mongoose_1.default.connect(dbURL);
         console.log("Base de datos conectada con éxito");
     }
     catch (error) {

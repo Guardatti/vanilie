@@ -16,15 +16,14 @@ exports.Server = void 0;
 const express_1 = __importDefault(require("express"));
 const config_1 = require("../database/config");
 const cors_1 = __importDefault(require("cors"));
-const products_1 = __importDefault(require("../routes/products"));
-const products_2 = __importDefault(require("../routes/products"));
-const products_3 = __importDefault(require("../routes/products"));
+const auth_1 = __importDefault(require("../routes/auth"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
+        this.port = process.env.PORT;
+        this.authPath = '/auth';
         this.connectionToDB();
         this.middelwares();
-        this.enableCors();
         this.routes();
     }
     connectionToDB() {
@@ -34,18 +33,14 @@ class Server {
     }
     middelwares() {
         this.app.use(express_1.default.json());
-    }
-    enableCors() {
         this.app.use((0, cors_1.default)());
     }
     routes() {
-        this.app.use('/productos', products_1.default);
-        this.app.use('/', products_2.default);
-        this.app.use('/', products_3.default);
+        this.app.use(this.authPath, auth_1.default);
     }
     listen() {
-        this.app.listen(8080, () => {
-            console.log('Servidor corriendo en el puerto 8080');
+        this.app.listen(this.port, () => {
+            console.log(`Servidor corriendo en el puerto ${this.port}`);
         });
     }
 }

@@ -14,14 +14,14 @@ const products_1 = require("../models/products");
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = req.body;
-        const product = new products_1.Product(data);
-        yield product.save();
         if (!data.category || !data.img || !data.price || !data.sex || !data.title) {
             res.status(400).json({
                 msg: 'Solicitud inválida: asegúrese de completar todos los campos obligatorios.'
             });
             return;
         }
+        const product = new products_1.Product(data);
+        yield product.save();
         res.status(201).json({
             msg: '¡Producto creado con éxito!',
             product,
@@ -42,7 +42,7 @@ const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             return;
         }
         res.status(200).json({
-            msg: 'Productos encontrados',
+            msg: '¡Productos encontrado!',
             products,
         });
     }
