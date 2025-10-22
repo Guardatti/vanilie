@@ -5,6 +5,7 @@
     align-items: center;
     gap: 30px;
     padding-top: 60px;
+    background: url('../../../public/img_bg_r_l/1.webp') center / cover no-repeat;
 }
 
 .container-contact-form{
@@ -17,6 +18,7 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+    background-color: #ffffff;
     @media (min-width: 320px) and (max-width: 500px){
         width: 95%;
     }
