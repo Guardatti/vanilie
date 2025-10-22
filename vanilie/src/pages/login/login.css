@@ -2,29 +2,29 @@
     min-height: 100dvh;
     display: flex;
     justify-content: center;
+    align-items: start;
+    padding-top: 100px;
     background: url('../../../public/img_bg_r_l/1.webp') center / cover no-repeat;
 }
 
 .container-login{
-    width: 80%;
+    width: 400px;
     display: flex;
     justify-content: center;
-    padding: 7rem 0 7rem 0;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0px 40px 0px;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    gap: 30px;
+    background-color: #ffffff;
     @media (min-width: 320px) and (max-width: 500px){
-        width: 100%;
+        width: 95%;
     }
 }
 
-.container-login-form{
-    width: 400px;
-    height: 375px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    border: 1px solid #b4b4b4;
-}
 
 .container-login-form-title{
-    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +41,7 @@
     flex-direction: column;
     gap: 30px;
     padding-top: 1rem;
+    width: 100%;
 }
 
 .container-login-label-input{
