@@ -1,8 +1,12 @@
 import React from 'react'
 import './personaldata.css'
+import { useAppSelector } from '../../../redux/hooks'
 
 
 const PersonalData: React.FC = () => {
+
+    const { currentUser } = useAppSelector(state => state.user)
+
     return (
         <div className='container-personaldata-1'>
             <div className='container-personaldata-2'>
@@ -11,15 +15,15 @@ const PersonalData: React.FC = () => {
             <div className='container-personaldata-3'>
                 <div className='container-personaldata-4'>
                     <label htmlFor="">Nombre</label>
-                    <span>Nicolás</span>
+                    <span>{currentUser?.name}</span>
                 </div>
                 <div className='container-personaldata-4'>
                     <label htmlFor="">Apellido</label>
-                    <span>Guardatti</span>
+                    <span>{currentUser?.surname}</span>
                 </div>
                 <div className='container-personaldata-4'>
                     <label htmlFor="">Email</label>
-                    <span>asdasd123123@gmail.com</span>
+                    <span>{currentUser?.email}</span>
                 </div>
                 <div className='container-personaldata-4'>
                     <button>EDITAR</button>

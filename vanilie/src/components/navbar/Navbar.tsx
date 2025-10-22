@@ -4,15 +4,18 @@ import './navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { GrSearch } from "react-icons/gr";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import ModalCart from '../cart/ModalCart';
 import Search from '../search/Search';
 import { SlHandbag } from "react-icons/sl";
 import { LuUserRound } from "react-icons/lu";
+import { setCurrentUser } from '../../redux/user/userSlice';
 
 
 
 const Navbar: React.FC = () => {
+
+  const { currentUser } = useAppSelector(state => state.user);
 
   const navigate = useNavigate();
 
@@ -25,6 +28,8 @@ const Navbar: React.FC = () => {
   const [menuProducts, setMenuProducts] = useState<boolean>(false)
 
   const cart = useAppSelector(state => state.cart.cart)
+
+  const dispatch = useAppDispatch()
 
   const totalQuantity = cart.reduce((total, quantity) => {
     return total += quantity.quantity
@@ -62,6 +67,16 @@ const Navbar: React.FC = () => {
     setMenuProducts(false);
   }
 
+  const handleUser = () => {
+
+    if (currentUser) {
+      navigate('/cuenta/perfil/datos-personales')
+    } else {
+      navigate('/cuenta/inicio-de-sesion')
+    }
+
+  }
+
   return (
     <header className='header'>
       <FiMenu className='menuicon' onClick={toggleMenu}/>
@@ -95,15 +110,21 @@ const Navbar: React.FC = () => {
         <Link to='/sobre-nosotros' className='link' onClick={closeMenus}>SOBRE NOSOTROS</Link>
         
         <span className='link - link_search' style={{cursor: 'pointer'}} onClick={toggleSearch}>BUSCAR</span>
-        <Link to='/cuenta/inicio-de-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
-        <Link to='/cuenta/perfil/datos-personales' className='link - link_perfil' onClick={closeMenus}>PERFIL</Link>
-        <Link to='/cuenta/perfil/pedidos' className='link - link_pedidos' onClick={closeMenus}>MIS PEDIDOS</Link>
-        <span className='link - link_user' style={{cursor: 'pointer'}}  onClick={closeMenus}>CERRAR SESION</span>
+        {
+          currentUser ?
+          <>
+            <Link to='/cuenta/perfil/datos-personales' className='link - link_perfil' onClick={closeMenus}>PERFIL</Link>
+            <Link to='/cuenta/perfil/pedidos' className='link - link_pedidos' onClick={closeMenus}>MIS PEDIDOS</Link>
+            <span className='link - link_user' style={{cursor: 'pointer'}}  onClick={() => {closeMenus() ; dispatch(setCurrentUser(null)) ; navigate('/cuenta/inicio-de-sesion')}}>CERRAR SESION</span>
+          </>
+          :
+          <Link to='/cuenta/inicio-de-sesion' className='link - link_user' onClick={closeMenus}>INICIAR SESION</Link>
+        }
 
       </nav>
       <div className='container-icons'>
         <GrSearch className='searchicon' onClick={toggleSearch}/>
-        <LuUserRound className='usericon' onClick={() => navigate('/cuenta/inicio-de-sesion')}/>
+        <LuUserRound className='usericon' onClick={handleUser}/>
         <SlHandbag className='bagicon' onClick={toggleCart}/>
         {
           totalQuantity > 0 && (

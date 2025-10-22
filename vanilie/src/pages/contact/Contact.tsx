@@ -82,9 +82,9 @@ const Contact: React.FC = () => {
           <div className='container-input-contact-form'>
             {
               loading ? (
-                <div className='loading-contact-form'>
+                <button className='loading-contact-form' disabled={true}>
                   <div className='spinner-contact-form'/>
-                </div>
+                </button>
               )
               :
               (

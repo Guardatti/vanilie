@@ -17,6 +17,7 @@ import NavbarProfile from "../components/navbarProfile/NavbarProfile"
 import Orders from "../pages/profile/orders/Orders"
 import PersonalData from "../pages/profile/personalData/PersonalData"
 import Checkout from "../pages/checkout/Checkout"
+import ProtectedRoute from "../components/protectedRoute/ProtectedRoute"
 
 
 const Routes = () => {
@@ -56,16 +57,30 @@ const Routes = () => {
                 
                 <Route path="cuenta">
                   <Route index element={<Navigate to="inicio-de-sesion" replace />} />
-                  <Route path="inicio-de-sesion" element={<Login />} />
+                  <Route path="inicio-de-sesion" element={<Login />}/>
                   <Route path="registro" element={<Register />} />
-                  <Route path="perfil" element={<NavbarProfile />}>
+                  <Route
+                  path="perfil"
+                  element={
+                    <ProtectedRoute redirectTo="/cuenta/inicio-de-sesion">
+                      <NavbarProfile />
+                    </ProtectedRoute>
+                  }
+                  >
                     <Route index element={<Navigate to="datos-personales" replace />} />
                     <Route path="datos-personales" element={<PersonalData />} />
                     <Route path="pedidos" element={<Orders />} />
                   </Route>
                 </Route>
 
-                <Route path="/pago" element={<Checkout />} />
+                <Route
+                path="/pago"
+                element={
+                  <ProtectedRoute redirectTo="/cuenta/inicio-de-sesion">
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+                />
 
                 <Route path="*" element={<PageNotFound />} />
             </ReactRoutes>

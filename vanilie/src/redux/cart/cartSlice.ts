@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addItemToCart, decraseItemToCart, removeItemToCart } from "./cartUtils";
 import { CartItems, CartState } from "../interface";
 
@@ -13,21 +13,21 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
 
-        addToCart: (state, action: {payload: CartItems}) => {
+        addToCart: (state, action: PayloadAction<CartItems>) => {
             return{
                 ...state,
                 cart: addItemToCart(state.cart, action.payload)
             }
         },
 
-        decraseToCart: (state, action: {payload: number}) => {
+        decraseToCart: (state, action: PayloadAction<number>) => {
             return{
                 ...state,
                 cart: decraseItemToCart(state.cart, action.payload)
             }
         },
 
-        removeToCart: (state, action: {payload: number}) => {
+        removeToCart: (state, action: PayloadAction<number>) => {
             return{
                 ...state,
                 cart: removeItemToCart(state.cart, action.payload)

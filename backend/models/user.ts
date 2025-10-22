@@ -2,21 +2,19 @@ import { model, Model, Schema } from "mongoose";
 import { ROLES } from "../helpers/constants";
 
 export interface IUser {
-    nombre: string;
-    apellido: string;
+    name: string;
+    surname: string;
     email: string;
     password: string;
     rol?: string;
-    code?: string;
-    verified?: string;
 }
 
 const UserSchema = new Schema<IUser>({
-    nombre: {
+    name: {
         type: String,
         required: [true, "El nombre es obligatorio"]
     },
-    apellido: {
+    surname: {
         type: String,
         required: [true, "El apellido es obligatorio"]
     },
@@ -31,18 +29,11 @@ const UserSchema = new Schema<IUser>({
     rol: {
         type: String,
         default: ROLES.user
-    },
-    code: {
-        type: String,
-    },
-    verified: {
-        type: Boolean,
-        default: false
     }
 })
 
 UserSchema.methods.toJSON = function() {
-    const {__v, password, _id, code, ...user} = this.toObject();
+    const {__v, password, _id, ...user} = this.toObject();
     
     return user;
 }

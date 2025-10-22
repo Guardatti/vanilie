@@ -18,6 +18,8 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
 
     const navigate = useNavigate()
 
+    const { currentUser } = useAppSelector(state => state.user)
+
     const cart = useAppSelector(state => state.cart.cart)
 
     const dispatch = useAppDispatch();
@@ -32,6 +34,16 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
 
     const toggleCart = () => {
       setIsOpen(false);
+    }
+
+    const handleUser = () => {
+
+      if (currentUser) {
+        navigate('/pago')
+      } else {
+        navigate('/cuenta/inicio-de-sesion')
+      }
+
     }
 
   return (
@@ -69,7 +81,7 @@ const ModalCart: React.FC<ContactProps> = ({isOpen, setIsOpen}) => {
         </div>
         <div className='container-cart-buttons'>
           <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => dispatch(clearCart())}>VACIAR</motion.button>
-          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => { navigate('/pago') ; toggleCart()}}>COMPRAR</motion.button>
+          <motion.button whileTap={{scale: 0.95}} disabled={totalQuantity <= 0} onClick={() => {handleUser() ; toggleCart()}}>COMPRAR</motion.button>
         </div>
       </div>
     </div>
