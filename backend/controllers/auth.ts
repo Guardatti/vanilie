@@ -36,7 +36,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     const {email, password}: IUser = req.body;
 
     try {
-        
+
         const user = await User.findOne({email})
 
         if (!user) {

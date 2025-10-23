@@ -3,13 +3,15 @@ import cartReducer from '../redux/cart/cartSlice'
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from 'redux-persist';
 import userReducer from '../redux/user/userSlice'
+import ordersReducer from '../redux/orders/ordersSlice'
+
 
 
 const reducers = combineReducers({
     cart: cartReducer,
     user: userReducer,
+    orders: ordersReducer
 })
-
 
 const persistConfig = {
     key: 'root',
@@ -17,9 +19,7 @@ const persistConfig = {
     whitelist: ['cart', 'user'],
 }
 
-
 const persistedReducer = persistReducer(persistConfig, reducers)
-
 
 export const store = configureStore({
     reducer: persistedReducer,
@@ -27,7 +27,6 @@ export const store = configureStore({
         serializableCheck: false
     })
 })
-
 
 export const persistor = persistStore(store)
 

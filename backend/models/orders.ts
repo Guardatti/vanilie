@@ -14,7 +14,6 @@ interface IItem {
 export interface IOrder {
     createdAt: Date;
     user: Types.ObjectId;
-    price: number;
     items: IItem[];
     total: number;
 }

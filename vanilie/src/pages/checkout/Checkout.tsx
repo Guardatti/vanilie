@@ -1,19 +1,46 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './checkout.css';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import CardCheckout from './CardCheckout';
 import { formatPrice } from '../../utils/formatPrice';
+import { useForm } from 'react-hook-form';
+import { ICheckoutFormData } from '../../utils/interfaceCheckout/interfaceCheckout';
+import { toast, ToastContainer } from 'react-toastify';
+import { createOrder } from '../../axios/axiosOrders';
+import { IOrder } from '../../utils/interfaceOrdersSlice/interfaceOrdersSlice';
+import { clearCart } from '../../redux/cart/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 
+
+type FocusedField = "name" | "number" | "expiry" | "cvc" | "";
 
 const Checkout: React.FC = () => {
     
-    const [state, setState] = useState({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<ICheckoutFormData>();
+
+    const navigate = useNavigate()
+
+    const form = useRef<HTMLFormElement>(null);
+
+    const dispatch = useAppDispatch();
+
+    const currentUser = useAppSelector(state => state.user.currentUser)
+
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const [state, setState] = useState<{
+        number: string;
+        expiry: string;
+        cvc: string;
+        name: string;
+        focus: FocusedField;
+    }>({
         number: '',
         expiry: '',
-        cvc: '',    
+        cvc: '',
         name: '',
         focus: '',
     });
@@ -57,7 +84,7 @@ const Checkout: React.FC = () => {
     };
 
     const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-        setState((prev) => ({ ...prev, focus: e.target.name }));
+        setState((prev) => ({ ...prev, focus: e.target.name as FocusedField}));
     };
 
     const cart = useAppSelector(state => state.cart.cart)
@@ -69,6 +96,61 @@ const Checkout: React.FC = () => {
     const totalPrice = cart.reduce((total, item) => {
         return (total += item.price * item.quantity)
     }, 0)
+
+    const onSubmit = async () => {
+
+        const orderData: IOrder = {
+            items: cart,
+            total: totalPrice,
+        }
+
+        try {
+
+            setLoading(true)
+
+            createOrder(orderData, dispatch, currentUser)
+
+            dispatch(clearCart())
+
+            toast.success('¡Compra realizada!', {
+                position: "bottom-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+
+            setTimeout(() => {
+                navigate('/cuenta/perfil/pedidos');
+            }, 2000);
+
+        } catch (error) {
+            toast.error('¡Error al crear la orden!', {
+            position: "bottom-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+        } finally {
+            setLoading(false)
+            reset()
+            setState({
+                number: '',
+                expiry: '',
+                cvc: '',
+                name: '',
+                focus: '',
+            });
+        }
+
+    }
 
     return (
         <div className="container-checkout-1">
@@ -101,10 +183,10 @@ const Checkout: React.FC = () => {
                                 focused={state.focus}
                             />
                         </div>
-                        <form>
+                        <form ref={form} onSubmit={handleSubmit(onSubmit)}>
                             <input
                                 type="tel"
-                                name="number"
+                                {...register('number', {required: true})}
                                 placeholder="Número de tarjeta"
                                 value={state.number}
                                 onChange={handleInputChange}
@@ -112,18 +194,20 @@ const Checkout: React.FC = () => {
                                 maxLength={19}
                                 style={{ fontWeight: 300, fontFamily: 'none' }}
                             />
+                            {errors.number && <span style={{fontSize: '12px', color: 'red', width: '80%'}}>Campo obligatorio</span>}
                             <input
                                 type="text"
-                                name="name"
+                                {...register('name', {required: true})}
                                 placeholder="Nombre"
                                 value={state.name}
                                 onChange={handleInputChange}
                                 onFocus={handleInputFocus}
                                 style={{ fontWeight: 300 }}
                             />
+                            {errors.name && <span style={{fontSize: '12px', color: 'red', width: '80%'}}>Campo obligatorio</span>}
                             <input
                                 type="tel"
-                                name="expiry"
+                                {...register('expiry', {required: true})}
                                 placeholder="Fecha expiración"
                                 value={state.expiry}
                                 onChange={handleInputChange}
@@ -131,9 +215,10 @@ const Checkout: React.FC = () => {
                                 maxLength={5}
                                 style={{ fontWeight: 300, fontFamily: 'none' }}
                             />
+                            {errors.expiry && <span style={{fontSize: '12px', color: 'red', width: '80%'}}>Campo obligatorio</span>}
                             <input
                                 type="tel"
-                                name="cvc"
+                                {...register('cvc', {required: true})}
                                 placeholder="CVC"
                                 value={state.cvc}
                                 onChange={handleInputChange}
@@ -141,11 +226,20 @@ const Checkout: React.FC = () => {
                                 maxLength={4}
                                 style={{ fontWeight: 300, fontFamily: 'none' }}
                             />
-                            <button type="submit" disabled={totalQuantity <= 0}>PAGAR</button>
+                            {errors.cvc && <span style={{fontSize: '12px', color: 'red', width: '80%'}}>Campo obligatorio</span>}
+                            {
+                                loading ?
+                                <button className='loading-checkout-form' disabled={true}>
+                                    <div className='spinner-checkout-form'/>
+                                </button>
+                                :
+                                <button type="submit" disabled={totalQuantity <= 0}>PAGAR</button>
+                            }
                         </form>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

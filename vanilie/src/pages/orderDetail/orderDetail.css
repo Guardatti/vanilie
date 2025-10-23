@@ -1,0 +1,108 @@
+.table-container-detail-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding-right: 1rem;
+    @media (min-width: 320px) and (max-width: 1050px) {
+        padding-left: 1rem;
+    }
+}
+
+.table-container-detail-2 {
+    display: none;
+    @media (min-width: 320px) and (max-width: 1050px) {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+}
+
+.table-container-detail-2 h2{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.table-container-detail-3 {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.order-thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.order-thead .order-th {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-weight: 300;
+    border: 1px solid #000000;
+    background-clip: padding-box;
+}
+
+.order-tbody .order-td,
+.order-tbody .order-th {
+    padding: 20px;
+    text-align: center;
+    font-weight: 300;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-tbody .order-td:first-child,
+.order-tbody .order-th:first-child {
+    border-left: 1px solid #ddd;
+}
+
+@media (max-width: 767px) {
+    .order-table,
+    .order-thead,
+    .order-tbody,
+    .order-tr,
+    .order-th,
+    .order-td {
+        display: block;
+        width: 100%;
+    }
+
+    .order-thead {
+        display: none;
+        position: static;
+    }
+
+    .order-tbody .order-tr {
+        margin-bottom: 15px;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #000000ea;
+        color: #ffffff;
+    }
+
+    .order-tbody .order-td, .order-tbody .order-th {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border: none !important;
+        position: relative;
+    }
+
+    tbody th:nth-of-type(1)::before { content: "Producto"; font-family: 'Playfair Display';}
+    tbody td:nth-of-type(1)::before { content: "Marca"; font-family: 'Playfair Display'}
+    tbody td:nth-of-type(2)::before { content: "Genero"; font-family: 'Playfair Display'}
+    tbody td:nth-of-type(3)::before { content: "Cantidad"; font-family: 'Playfair Display'}
+    tbody td:nth-of-type(4)::before { content: "Total"; font-family: 'Playfair Display'}
+
+}

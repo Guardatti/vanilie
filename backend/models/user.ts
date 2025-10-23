@@ -29,7 +29,7 @@ const UserSchema = new Schema<IUser>({
     rol: {
         type: String,
         default: ROLES.user
-    }
+    },
 })
 
 UserSchema.methods.toJSON = function() {

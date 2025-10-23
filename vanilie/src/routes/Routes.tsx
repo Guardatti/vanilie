@@ -18,6 +18,7 @@ import Orders from "../pages/profile/orders/Orders"
 import PersonalData from "../pages/profile/personalData/PersonalData"
 import Checkout from "../pages/checkout/Checkout"
 import ProtectedRoute from "../components/protectedRoute/ProtectedRoute"
+import OrderDetail from "../pages/orderDetail/OrderDetail"
 
 
 const Routes = () => {
@@ -69,7 +70,10 @@ const Routes = () => {
                   >
                     <Route index element={<Navigate to="datos-personales" replace />} />
                     <Route path="datos-personales" element={<PersonalData />} />
-                    <Route path="pedidos" element={<Orders />} />
+                    <Route path="pedidos">
+                      <Route index element={<Orders />} />
+                      <Route path="id/:id" element={<OrderDetail />} />
+                    </Route>
                   </Route>
                 </Route>
 
