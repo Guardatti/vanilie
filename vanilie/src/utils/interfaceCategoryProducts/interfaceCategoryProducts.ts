@@ -11,14 +11,14 @@ export const imgByGender: ICategoryProducts[] = [
         id: 1, 
         img: '/img_category_products/armani_man.jpg', 
         alt: 'Armani', 
-        brand: 'Giorgio Armani', 
+        brand: 'giorgio-armani', 
         gender: 'hombre' 
     },
     { 
         id: 2, 
         img: '/img_category_products/armani_woman.jpg', 
         alt: 'Armani', 
-        brand: 'Giorgio Armani', 
+        brand: 'giorgio-armani', 
         gender: 'mujer' 
     },
     { 
@@ -109,14 +109,14 @@ export const imgByGender: ICategoryProducts[] = [
         id: 15, 
         img: '/img_category_products/jean_paul_gaultier_man.jpg', 
         alt: 'Jean Paul Gaultier', 
-        brand: 'jean-paul-gualtier', 
+        brand: 'jean-paul-gaultier', 
         gender: 'hombre' 
     },
     { 
         id: 16, 
         img: '/img_category_products/jean_paul_gaultier_woman.jpg', 
         alt: 'Jean Paul Gaultier', 
-        brand: 'jean-paul-gualtier', 
+        brand: 'jean-paul-gaultier', 
         gender: 'mujer' 
     },
     { 

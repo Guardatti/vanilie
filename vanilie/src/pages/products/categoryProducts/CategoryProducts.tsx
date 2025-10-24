@@ -25,6 +25,10 @@ const CategoryProducts: React.FC = () => {
             return
         }
 
+        if (brand !== "bvlgari" && brand !== "carolina-herrera" && brand !== "chanel" && brand !== "creed" && brand !== "dior" && brand !== "giorgio-armani" && brand !== "givenchy" && brand !== "jean-paul-gaultier" && brand !== "ralph-lauren" && brand !== "tom-ford" && brand !== "versace" && brand !== "victoria-secret" && brand !== "yves-saint-laurent") {
+            navigate('/')
+        }
+
         const findProducts = async (): Promise<void> => {
         
             const response: IProducts[] = await getProductsBybrand(brand);

@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
             <Link to='/productos/marca/ralph-lauren' className='link_dropdownmenu' onClick={closeMenus}>Ralph Lauren</Link>
             <Link to='/productos/marca/tom-ford' className='link_dropdownmenu' onClick={closeMenus}>Tom Ford</Link>
             <Link to='/productos/marca/versace' className='link_dropdownmenu' onClick={closeMenus}>Versace</Link>
-            <Link to='/productos/marca/victorias-secret' className='link_dropdownmenu' onClick={closeMenus}>Victoria's Secret</Link>
+            <Link to='/productos/marca/victoria-secret' className='link_dropdownmenu' onClick={closeMenus}>Victoria's Secret</Link>
             <Link to='/productos/marca/yves-saint-laurent' className='link_dropdownmenu' onClick={closeMenus}>Yves Saint Laurent</Link>
           </div>
         </div>

@@ -44,6 +44,10 @@ const CategorySex: React.FC = () => {
             return
         }
 
+        if (gender !== "hombre" && gender !== "mujer") {
+            navigate('/')
+        }
+
         const findProducts = async (): Promise<void> => {
         
             const response: IProducts[] = await getProductsBySex(gender);
