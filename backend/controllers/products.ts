@@ -25,6 +25,9 @@ import { Product } from "../models/products";
     } catch (error) {
 
         console.error("Error al crear productos:", error);
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
 
     }
 }; */
@@ -34,27 +37,40 @@ export const getProducts = async (req: Request, res: Response) => {
 
     try {
 
-        const products = await Product.find();
+        const { brand, sex } = req.query
 
-        if (!products) {
+        const filter: any = {};
+
+        if (brand) {
+            filter.brand = brand;
+        }
+
+        if (sex) {
+            filter.sex = sex;
+        }
+
+        const products = await Product.find(filter)
+        
+        if (!products || products.length === 0) {
 
             res.status(404).json({
                 msg: "No hay productos cargados"
             });
     
             return
-
+        
         }
 
         res.status(200).json({
-            msg: "Productos obtenidos correctamente",
-            products,
-        });
+            products
+        })
 
     } catch (error) {
 
         console.error("Error al obtener productos:", error);
-        
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
     }
 
 };
@@ -64,41 +80,17 @@ export const getProductsByBrand = async (req: Request, res: Response) => {
     try {
 
         const { brand } = req.params
+        const { sex } = req.query
 
-        const products = await Product.find({brand});
-
-        if (!products) {
-
-            res.status(404).json({
-                msg: `No hay productos cargados de la marca ${brand}`
-            });
-    
-            return
-
+        const filter: any = { brand };
+        
+        if (sex) {
+            filter.sex = sex;
         }
 
-        res.status(200).json({
-            msg: "Productos obtenidos correctamente",
-            products,
-        });
+        const products = await Product.find(filter);
 
-    } catch (error) {
-
-        console.error("Error al obtener productos:", error);
-        
-    }
-
-};
-
-export const getProductsBySex = async (req: Request, res: Response) => {
-
-    try {
-
-        const { sex } = req.params
-
-        const products = await Product.find({sex});
-
-        if (!products) {
+        if (!products || products.length === 0) {
 
             res.status(404).json({
                 msg: 'No hay productos cargados'
@@ -116,7 +108,49 @@ export const getProductsBySex = async (req: Request, res: Response) => {
     } catch (error) {
 
         console.error("Error al obtener productos:", error);
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
+    }
+
+};
+
+export const getProductsBySex = async (req: Request, res: Response) => {
+
+    try {
+
+        const { sex } = req.params
+        const { brand } = req.query
+
+        const filter: any = { sex };
         
+        if (brand) {
+            filter.brand = brand;
+        }
+
+        const products = await Product.find(filter);
+
+        if (!products || products.length === 0) {
+
+            res.status(404).json({
+                msg: 'No hay productos cargados'
+            });
+    
+            return
+
+        }
+
+        res.status(200).json({
+            msg: "Productos obtenidos correctamente",
+            products,
+        });
+
+    } catch (error) {
+
+        console.error("Error al obtener productos:", error);
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
     }
 
 };
@@ -147,7 +181,9 @@ export const getProductsById = async (req: Request, res: Response) => {
     } catch (error) {
 
         console.error("Error al obtener el producto:", error);
-        
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
     }
 
 };

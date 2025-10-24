@@ -1,11 +1,19 @@
 import axios from "axios";
 
 
-export const getProducts = async () => {
+interface IData {
+    sex?: string,
+    brand?: string,
+}
+
+
+export const getProducts = async (data: IData = {}) => {
 
     try {
         
-        const response = await axios.get("http://localhost:8080/products")
+        const response = await axios.get(`http://localhost:8080/products`, {
+            params: data
+        })
 
         return response.data.products
 
@@ -15,11 +23,13 @@ export const getProducts = async () => {
 
 }
 
-export const getProductsBybrand = async (brand: string) => {
+export const getProductsBybrand = async (brand: string, data: IData = {}) => {
 
-    try {
-        
-        const response = await axios.get(`http://localhost:8080/products/brand/${brand}`)
+    try {      
+
+        const response = await axios.get(`http://localhost:8080/products/brand/${brand}`, {
+            params: data
+        })
 
         return response.data.products
 
@@ -29,11 +39,13 @@ export const getProductsBybrand = async (brand: string) => {
 
 }
 
-export const getProductsBySex = async (sex: string) => {
+export const getProductsBySex = async (sex: string, data: IData = {}) => {
 
     try {
         
-        const response = await axios.get(`http://localhost:8080/products/sex/${sex}`)
+        const response = await axios.get(`http://localhost:8080/products/sex/${sex}`, {
+            params: data
+        })
 
         return response.data.products
 

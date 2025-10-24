@@ -12,7 +12,9 @@ import ScrollReveal from 'scrollreveal';
 import { getProducts } from '../../../axios/axiosProducts';
 
 
+
 const Allproducts: React.FC = () => {
+
     const navigate = useNavigate();
 
     const [allProducts, setProducts] = useState<IProducts[]>([])
