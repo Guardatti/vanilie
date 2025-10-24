@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../products.css';
-import { products } from '../../../components/data/products';
+import { IProducts } from '../../../components/data/products';
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/effect-fade';
@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { imgByGender } from '../../../utils/interfaceCategoryProducts/interfaceCategoryProducts';
 import Pagination from '@mui/material/Pagination';
 import ScrollReveal from 'scrollreveal';
+import { getProductsBySex } from '../../../axios/axiosProducts';
 
 
 const CategorySex: React.FC = () => {
@@ -17,21 +18,14 @@ const CategorySex: React.FC = () => {
 
     const { gender } = useParams();
 
-    const slugify = (text: string) => {
-        return text
-            .toLowerCase()
-            .replace(/[\s]+/g, '-')
-            .replace(/[^a-z0-9-]/g, '');
-    };
-
-    const filteredProducts = products.filter((x) => x.sex === gender);
+    const [productsBySex, setProductsBySex] = useState<IProducts[]>([])
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 30;
 
     const offset = (currentPage - 1) * itemsPerPage;
-    const currentItems = filteredProducts.slice(offset, offset + itemsPerPage);
-    const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+    const currentItems = productsBySex.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(productsBySex.length / itemsPerPage);
 
     const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
@@ -43,10 +37,23 @@ const CategorySex: React.FC = () => {
     };
 
     useEffect(() => {
-        setCurrentPage(1);
-    }, [gender]);
 
-    useEffect(() => {
+        setCurrentPage(1);
+
+        if (!gender) {
+            return
+        }
+
+        const findProducts = async (): Promise<void> => {
+        
+            const response: IProducts[] = await getProductsBySex(gender);
+        
+                setProductsBySex(response)
+        
+            }
+        
+        findProducts();
+
         ScrollReveal().reveal(".container-products", {
         origin: "bottom",
         distance: "100px",
@@ -54,7 +61,8 @@ const CategorySex: React.FC = () => {
         easing: "ease-in-out",
         reset: false,
         });
-    }, [])
+
+    }, [gender]);
 
     return (
         <div className='container-product-general'>
@@ -69,7 +77,7 @@ const CategorySex: React.FC = () => {
                     className="container-slide-img"
                 >
                     {imgByGender
-                        .filter((z) => slugify(z.gender) === gender)
+                        .filter((z) => z.gender === gender)
                         .map((x) => (
                             <SwiperSlide key={x.id}>
                                 <img src={x.img} alt={x.alt} className='img-slider-products' />
@@ -94,12 +102,12 @@ const CategorySex: React.FC = () => {
 
             <div className='container-products'>
                 {currentItems.map((product) => (
-                    <div className='container-product-img-info' key={product.id}>
+                    <div className='container-product-img-info' key={product._id}>
                         <div className='container-product-img'>
                             <img
                                 className='img-product'
                                 src={product.img}
-                                onClick={() => navigate(`/productos/genero/${gender}/id/${product.id}`)}
+                                onClick={() => navigate(`/productos/genero/${gender}/id/${product._id}`)}
                             />
                         </div>
                     </div>

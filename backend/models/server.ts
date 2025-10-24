@@ -3,7 +3,7 @@ import { connectDB } from "../database/config";
 import cors from "cors";
 import authRoutes from "../routes/auth"
 import ordersRoutes from "../routes/orders"
-
+import productsRoutes from "../routes/products"
 
 
 export class Server {
@@ -12,12 +12,14 @@ export class Server {
     port: string | number | undefined;
     authPath: string;
     ordersPath: string;
+    productsPath: string;
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
         this.authPath = '/auth';
         this.ordersPath = '/orders';
+        this.productsPath = '/products';
         this.connectionToDB();
         this.middelwares();
         this.routes();
@@ -35,6 +37,7 @@ export class Server {
     routes(): void {
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.ordersPath, ordersRoutes)
+        this.app.use(this.productsPath, productsRoutes)
     }
 
     listen(): void {

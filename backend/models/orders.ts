@@ -31,7 +31,7 @@ const OrderSchema = new Schema<IOrder> ({
     items: [
         {
             id: {
-                type: Number, required: true
+                type: String, required: true
             },
             title: {
                 type: String, required: true

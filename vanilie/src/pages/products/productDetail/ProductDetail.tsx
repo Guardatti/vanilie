@@ -1,32 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { products } from '../../../components/data/products';
+import { IProducts } from '../../../components/data/products';
 import '../productDetail.css'
 import { useAppDispatch } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart/cartSlice';
 import { formatPrice } from '../../../utils/formatPrice';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { getProductsById } from '../../../axios/axiosProducts';
 
 
 const ProductDetail: React.FC = () => {
 
-    const {id} = useParams();
+    const { id } = useParams();
+
+    const [product, setProduct] = useState<IProducts>()
 
     const dispatch = useAppDispatch();
 
-    const item = products.find((y) => y.id === parseInt(id || '')); 
+    const unslugify = (text: string) => {
+        return text
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
 
     const handleAddToCart = () => {
-        if (item) {
+        if (product) {
             dispatch(addToCart({
-                id: item.id,
-                title: item.title,
-                description: item.description,
-                img: item.img,
-                brand: item.brand,
-                price: item.price,
-                sex: item.sex,
+                id: product._id,
+                title: product.title,
+                description: product.description,
+                img: product.img,
+                brand: product.brand,
+                price: product.price,
+                sex: product.sex,
                 quantity: 1
             }));
 
@@ -43,29 +51,47 @@ const ProductDetail: React.FC = () => {
         }
     }
     
+    useEffect(() => {
+
+        if (!id) {
+            return
+        }
+
+        const findProducts = async (): Promise<void> => {
+
+            const response: IProducts = await getProductsById(id);
+
+            setProduct(response)
+
+        }
+
+        findProducts();
+        
+    }, [id]);
+
     return (
         <div className='container-product-detail-1'>
             {
-                item ?
-                <div className='container-product-detail-2' key={item.id}>
+                product ?
+                <div className='container-product-detail-2' key={product._id}>
                     <div className='container-product-detail-3'>
-                        <img src={item.img} alt={item.title} />
+                        <img src={product.img} alt={product.title} />
                     </div>
                     <div className='container-product-detail-4'>
-                        <h2>{item.title}</h2>
-                        <span style={{fontSize: '1.3rem', fontFamily: 'none'}}>{formatPrice(item.price)}</span>
+                        <h2>{product.title}</h2>
+                        <span style={{fontSize: '1.3rem', fontFamily: 'none'}}>{formatPrice(product.price)}</span>
                         <p>Sumérgete en el mundo de la perfumería de alta calidad con nuestra exclusiva selección de fragancias. Cada perfume ha sido cuidadosamente elaborado combinando notas clásicas y modernas, creando aromas que despiertan emociones y dejan una huella inolvidable. Desde esencias frescas y ligeras hasta fragancias intensas y sofisticadas, cada botella refleja elegancia, estilo y personalidad. Perfectos para cualquier ocasión, nuestros perfumes se adaptan a tu carácter y te acompañan a lo largo del día, ofreciendo una experiencia sensorial única que resalta tu presencia y distinción. Déjate envolver por la armonía de cada aroma y convierte cada momento en un recuerdo inolvidable.</p>
                         <button onClick={handleAddToCart}>Añadir a la cesta</button>
                         <div className='container-product-detail-5'>
                             <h3>Características</h3>
                             <div>
                                 <span>Marca</span>
-                                <span>{item.brand}</span>
+                                <span>{unslugify(product.brand)}</span>
                             </div>
                         </div>
                         <div className='container-product-detail-6'>
                             <h3>Descripción</h3>
-                            <p>{item.description}</p>
+                            <p>{product.description}</p>
                         </div>
                         <div className='container-product-detail-7'>
                             <h3>Opciones de entrega</h3>

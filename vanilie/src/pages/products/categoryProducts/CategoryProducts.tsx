@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../products.css'
-import { products } from '../../../components/data/products'
+import { IProducts } from '../../../components/data/products'
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/effect-fade';
@@ -8,6 +8,7 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import { useNavigate, useParams } from 'react-router-dom';
 import { imgByGender } from '../../../utils/interfaceCategoryProducts/interfaceCategoryProducts';
 import ScrollReveal from 'scrollreveal';
+import { getProductsBybrand } from '../../../axios/axiosProducts';
 
 
 const CategoryProducts: React.FC = () => {
@@ -16,14 +17,24 @@ const CategoryProducts: React.FC = () => {
 
     const {brand} = useParams();
 
-    const slugify = (text: string) => {
-        return text
-            .toLowerCase()
-            .replace(/[\s]+/g, '-')
-            .replace(/[^a-z0-9-]/g, '');
-    };
+    const [productsByBrand, setProductsByBrand] = useState<IProducts[]>([])
 
     useEffect(() => {
+        
+        if (!brand) {
+            return
+        }
+
+        const findProducts = async (): Promise<void> => {
+        
+            const response: IProducts[] = await getProductsBybrand(brand);
+        
+                setProductsByBrand(response)
+        
+            }
+        
+        findProducts();
+
         ScrollReveal().reveal(".container-products", {
         origin: "bottom",
         distance: "100px",
@@ -31,7 +42,7 @@ const CategoryProducts: React.FC = () => {
         easing: "ease-in-out",
         reset: false,
         });
-    }, [])
+    }, [brand])
 
     return (
         <div className='container-product-general'>
@@ -46,7 +57,7 @@ const CategoryProducts: React.FC = () => {
                     className="container-slide-img"
                 >
                     {
-                        imgByGender.filter((z) => slugify(z.brand) === brand).map((x) => {
+                        imgByGender.filter((z) => z.brand === brand).map((x) => {
                             return(
                                 <SwiperSlide key={x.id}>
                                     <img src={x.img} alt={x.alt} className='img-slider-products'/>
@@ -70,10 +81,10 @@ const CategoryProducts: React.FC = () => {
             </div>
             <div className='container-products'>
                 {
-                    products.filter((x) => slugify(x.brand) === brand).map((product) => (
-                        <div className='container-product-img-info' key={product.id}>
+                    productsByBrand.filter((x) => x.brand === brand).map((product) => (
+                        <div className='container-product-img-info' key={product._id}>
                             <div className='container-product-img'>
-                                <img className='img-product' src={product.img} onClick={() => navigate(`/productos/marca/${brand}/id/${product.id}`)}/>
+                                <img className='img-product' src={product.img} onClick={() => navigate(`/productos/marca/${brand}/id/${product._id}`)}/>
                             </div>
                         </div>
                         ))

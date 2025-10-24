@@ -2,8 +2,9 @@ import { model, Model, Schema } from "mongoose";
 
 export interface IProducts {
     title: string,
+    description: string,
     img: string,
-    category: string,
+    brand: string,
     price: number,
     sex: string,
 }
@@ -14,13 +15,16 @@ const productsSchema = new Schema<IProducts>({
         type: String,
         required: true,
     },
-
+    description:{
+        type: String,
+        required: true,
+    },
     img:{
         type: String,
         required: true,
     },
 
-    category:{
+    brand:{
         type: String,
         required: true,
     },

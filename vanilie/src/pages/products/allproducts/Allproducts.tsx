@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../products.css'
-import { products } from '../../../components/data/products'
+import { IProducts } from '../../../components/data/products'
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/effect-fade';
@@ -9,17 +9,20 @@ import { useNavigate } from 'react-router-dom';
 import { imgByGender } from '../../../utils/interfaceCategoryProducts/interfaceCategoryProducts';
 import Pagination from '@mui/material/Pagination';
 import ScrollReveal from 'scrollreveal';
+import { getProducts } from '../../../axios/axiosProducts';
 
 
 const Allproducts: React.FC = () => {
     const navigate = useNavigate();
 
+    const [allProducts, setProducts] = useState<IProducts[]>([])
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 30;
 
     const offset = (currentPage - 1) * itemsPerPage;
-    const currentItems = products.slice(offset, offset + itemsPerPage);
-    const pageCount = Math.ceil(products.length / itemsPerPage);
+    const currentItems = allProducts.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(allProducts.length / itemsPerPage);
 
     const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
@@ -31,6 +34,17 @@ const Allproducts: React.FC = () => {
     };
 
     useEffect(() => {
+
+        const findProducts = async (): Promise<void> => {
+
+            const response: IProducts[] = await getProducts();
+
+            setProducts(response)
+
+        }
+
+        findProducts();
+
         setCurrentPage(1);
 
         ScrollReveal().reveal(".container-products", {
@@ -40,6 +54,7 @@ const Allproducts: React.FC = () => {
         easing: "ease-in-out",
         reset: false,
         });
+        
     }, []);
 
     return (
@@ -75,12 +90,12 @@ const Allproducts: React.FC = () => {
             </div>
             <div className='container-products'>
                 {currentItems.map((product) => (
-                    <div className='container-product-img-info' key={product.id}>
+                    <div className='container-product-img-info' key={product._id}>
                         <div className='container-product-img'>
                             <img
                                 className='img-product'
                                 src={product.img}
-                                onClick={() => navigate(`/productos/id/${product.id}`)}
+                                onClick={() => navigate(`/productos/id/${product._id}`)}
                             />
                         </div>
                     </div>

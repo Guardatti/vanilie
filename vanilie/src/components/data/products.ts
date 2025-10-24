@@ -1,5 +1,5 @@
-interface Products{
-    id: number,
+export interface IProducts{
+    _id: number,
     title: string,
     description: string,
     img: string,
@@ -9,7 +9,7 @@ interface Products{
 }
 
 
-export const products: Products[] = [
+/* export const products: IProducts[] = [
     {
         id: 1,
         title: "Bvlgari Man Glacial Essence",
@@ -2206,4 +2206,4 @@ export const products: Products[] = [
         price: 230000,
         sex: "mujer"
     }
-];
+]; */
