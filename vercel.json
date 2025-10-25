@@ -2,7 +2,14 @@
     "version": 2,
     "builds": [
         {
-            "src": "app.ts",
+            "src": "vanille/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
+        },
+        {
+            "src": "backend/app.ts",
             "use": "@vercel/node"
         }
     ],
@@ -11,8 +18,14 @@
 
             "src": "/(.*)",
 
-            "dest": "app.ts"
+            "dest": "backend/app.ts"
             
+        },
+        {
+
+            "src": "/(.*)",
+            "dest": "vanille/dist/$1"
+
         }
     ]
 }
