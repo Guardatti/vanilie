@@ -23,6 +23,13 @@ const OrderDetail: React.FC = () => {
 
     const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
+    const unslugify = (text: string) => {
+        return text
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
     useEffect(() => {
 
         if (!orders) {
@@ -65,7 +72,7 @@ const OrderDetail: React.FC = () => {
                                 visitedOrder.items?.map((x) => (
                                     <tr className='order-tr' key={x.id}>
                                         <th className='order-th'>{x.title}</th>
-                                        <td className='order-td'>{x.brand}</td>
+                                        <td className='order-td'>{unslugify(x.brand)}</td>
                                         <td className='order-td'>{capitalize(x.sex)}</td>
                                         <td className='order-td' style={{fontFamily: 'none'}}>{x.quantity}</td>
                                         <td className='order-td' style={{fontFamily: 'none'}}>{formatPrice(x.price * x.quantity)}</td>
