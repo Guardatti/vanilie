@@ -16,6 +16,8 @@ const ProductDetail: React.FC = () => {
 
     const [product, setProduct] = useState<IProducts>()
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const dispatch = useAppDispatch();
 
     const unslugify = (text: string) => {
@@ -59,9 +61,20 @@ const ProductDetail: React.FC = () => {
 
         const findProducts = async (): Promise<void> => {
 
-            const response: IProducts = await getProductsById(id);
+            try {
+                
+                setLoading(true)
 
-            setProduct(response)
+                const response: IProducts = await getProductsById(id);
+
+                setProduct(response)
+
+
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false)
+            }
 
         }
 
@@ -72,6 +85,9 @@ const ProductDetail: React.FC = () => {
     return (
         <div className='container-product-detail-1'>
             {
+                loading ? 
+                <div className='spinner' />
+                :
                 product ?
                 <div className='container-product-detail-2' key={product._id}>
                     <div className='container-product-detail-3'>
