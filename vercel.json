@@ -8,8 +8,20 @@
     ],
     "routes": [
         {
-        "src": "/(.*)",
-        "dest": "backend/app.ts"
+            "src": "/products(.*)",
+            "dest": "backend/app.ts"
+        },
+        {
+            "src": "/auth(.*)",
+            "dest": "backend/app.ts"
+        },
+        {
+            "src": "/orders(.*)",
+            "dest": "backend/app.ts"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
         }
     ]
 }
