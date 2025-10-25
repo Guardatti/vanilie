@@ -49,9 +49,17 @@ const Allproducts: React.FC = () => {
             brand: filterBrand || undefined
         };
 
-        const response: IProducts[] = await getProducts(data);
-        setProducts(response);
-        setCurrentPage(1);
+        try {
+            setLoading(true)
+            const response: IProducts[] = await getProducts(data);
+            setProducts(response);
+            setCurrentPage(1);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+
     }
 
     useEffect(() => {
