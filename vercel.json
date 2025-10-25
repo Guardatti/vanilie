@@ -1,37 +1,11 @@
 {
-    "version": 2,
-    "builds": [
+    "buildCommand": "cd vanilie && npm install && npm run build",
+    "outputDirectory": "vanilie/dist",
+    "installCommand": "cd backend && npm install",
+    "rewrites": [
         {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        },
-        {
-            "src": "backend/app.ts",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/products(.*)",
-            "dest": "backend/app.ts"
-        },
-        {
-            "src": "/auth(.*)",
-            "dest": "backend/app.ts"
-        },
-        {
-            "src": "/orders(.*)",
-            "dest": "backend/app.ts"
-        },
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
+            "source": "/api/(.*)",
+            "destination": "/backend/app.ts"
         }
     ]
 }
