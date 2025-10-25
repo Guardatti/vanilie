@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { collectionErrors } from "../middlewares/collectionErrors";
-import { getProducts, getProductsByBrand, getProductsById, getProductsBySex } from "../controllers/products";
+import { getProducts, getProductsByBrand, getProductsById, getProductsBySearch, getProductsBySex } from "../controllers/products";
 // import { createProduct } from "../controllers/products";
 
 
@@ -46,6 +46,14 @@ router.get(
         collectionErrors
     ],
     getProductsById
+)
+
+router.get(
+    '/search',
+    [
+        collectionErrors
+    ],
+    getProductsBySearch
 )
 
 export default router

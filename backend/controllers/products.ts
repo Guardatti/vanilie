@@ -122,7 +122,7 @@ export const getProductsBySex = async (req: Request, res: Response) => {
         const { sex } = req.params
         const { brand } = req.query
 
-        const filter: any = { sex };
+        const filter: any = { sex: sex };
         
         if (brand) {
             filter.brand = brand;
@@ -187,3 +187,49 @@ export const getProductsById = async (req: Request, res: Response) => {
     }
 
 };
+
+export const getProductsBySearch = async (req: Request, res: Response) => {
+
+    try {
+
+        const { q } = req.query;
+
+        if (!q || typeof q !== 'string') {
+
+            res.status(400).json({
+                msg: "Debe proporcionar un término de búsqueda"
+            });
+
+            return;
+
+        }
+
+        const searchRegex = new RegExp(q, 'i');
+
+        const products = await Product.find({ title: searchRegex });
+
+        if (!products || products.length === 0) {
+
+            res.status(404).json({
+                msg: 'No se encontraron productos que coincidan con la búsqueda'
+            });
+
+            return;
+
+        }
+
+        res.status(200).json({
+            msg: "Productos encontrados",
+            products,
+        });
+
+    } catch (error) {
+        
+        console.log(error);
+        res.status(500).json({
+            msg: "Error en el servidor"
+        })
+
+    }
+
+}

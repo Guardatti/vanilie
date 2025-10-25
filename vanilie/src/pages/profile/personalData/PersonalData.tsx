@@ -25,9 +25,6 @@ const PersonalData: React.FC = () => {
                     <label htmlFor="">Email</label>
                     <span>{currentUser?.email}</span>
                 </div>
-                <div className='container-personaldata-4'>
-                    <button>EDITAR</button>
-                </div>
             </div>
         </div>
     )

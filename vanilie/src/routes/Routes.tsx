@@ -19,6 +19,7 @@ import PersonalData from "../pages/profile/personalData/PersonalData"
 import Checkout from "../pages/checkout/Checkout"
 import ProtectedRoute from "../components/protectedRoute/ProtectedRoute"
 import OrderDetail from "../pages/orderDetail/OrderDetail"
+import ProductsBySearch from "../pages/products/productsBySearch/ProductsBySearch"
 
 
 const Routes = () => {
@@ -31,6 +32,7 @@ const Routes = () => {
                 <Route path="/productos">
 
                   <Route index element={<Allproducts />} />
+                  <Route path='search' element={<ProductsBySearch />} />
                   <Route path="id/:id" element={<ProductoDetail />} />
 
                   <Route path="marca">

@@ -4,26 +4,22 @@ import { IProducts } from '../../../components/data/products'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/effect-fade';
 import { Autoplay, EffectFade } from 'swiper/modules';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { imgByGender } from '../../../utils/interfaceCategoryProducts/interfaceCategoryProducts';
 import Pagination from '@mui/material/Pagination';
 import ScrollReveal from 'scrollreveal';
-import { getProducts } from '../../../axios/axiosProducts';
-import { GrSearch } from "react-icons/gr";
-import { useForm } from 'react-hook-form';
-import { IData } from '../../../utils/interfaceData/interfaceData';
+import { getProductsBySearch } from '../../../axios/axiosProducts';
 
 
-const Allproducts: React.FC = () => {
+
+const ProductsBySearch: React.FC = () => {
 
     const navigate = useNavigate();
 
     const [allProducts, setProducts] = useState<IProducts[]>([])
 
-    const {handleSubmit} = useForm()
-
-    const [filterBrand, setFilterBrand] = useState('')
-    const [filterSex, setFilterSex] = useState('')
+    const [searchParams] = useSearchParams();
+    const searchQuery = searchParams.get('q');
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 30;
@@ -41,23 +37,21 @@ const Allproducts: React.FC = () => {
         }
     };
 
-    const onSubmit = async () => {
-
-        const data: IData = {
-            sex: filterSex || undefined,
-            brand: filterBrand || undefined
-        };
-
-        const response: IProducts[] = await getProducts(data);
-        setProducts(response);
-        setCurrentPage(1);
-    }
-
     useEffect(() => {
 
         const findProducts = async (): Promise<void> => {
 
-            const response: IProducts[] = await getProducts();
+            if (!searchQuery) {
+                navigate('*')
+                return
+            }
+
+            const response: IProducts[] = await getProductsBySearch(searchQuery);
+
+            if (!response || response.length === 0) {
+                navigate('*');
+                return;
+            }
 
             setProducts(response)
 
@@ -75,7 +69,7 @@ const Allproducts: React.FC = () => {
         reset: false,
         });
         
-    }, []);
+    }, [searchQuery]);
 
     return (
         <div className='container-product-general'>
@@ -103,32 +97,6 @@ const Allproducts: React.FC = () => {
             </div>
             <div className='container-general-title-filter'>
                 <h1>PRODUCTOS</h1>
-                <div className='container-filter'>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <select value={filterBrand} onChange={(e) => setFilterBrand(e.target.value)}>
-                            <option value="">Marca</option>
-                            <option value="bvlgari">Bvlgari</option>
-                            <option value="carolina-herrera">Carolina Herrera</option>
-                            <option value="chanel">Chanel</option>
-                            <option value="creed">Creed</option>
-                            <option value="dior">Dior</option>
-                            <option value="giorgio-armani">Giorgio Armani</option>
-                            <option value="givenchy">Givenchy</option>
-                            <option value="jean-paul-gaultier">Jean Paul Gaultier</option>
-                            <option value="ralph-lauren">Ralph Lauren</option>
-                            <option value="tom-ford">Tom Ford</option>
-                            <option value="versace">Versace</option>
-                            <option value="victoria-secret">Victoria Secret</option>
-                            <option value="yves-saint-laurent">Yves Saint Laurent</option>
-                        </select>
-                        <select value={filterSex} onChange={(e) => setFilterSex(e.target.value)}>
-                            <option value="">Genero</option>
-                            <option value="hombre" >Hombre</option>
-                            <option value="mujer" >Mujer</option>
-                        </select>
-                        <button type='submit' className='button-filter-search'><GrSearch className='filter-search'/></button>
-                    </form>
-                </div>
             </div>
             <div className='container-products'>
                 {currentItems.map((product) => (
@@ -163,4 +131,4 @@ const Allproducts: React.FC = () => {
     )
 }
 
-export default Allproducts
+export default ProductsBySearch

@@ -45,6 +45,11 @@
     margin-bottom: 80px;
     padding-bottom: 10px;
     border-bottom: 1px solid #e7e7e7;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
 }
 
 .container-general-title-filter h1{
@@ -53,26 +58,40 @@
     margin-left: 1rem;
 }
 
-.container-icon-filter {
+.container-filter {
     margin-right: 1rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    font-size: 13px;
-    cursor: pointer;
-    border: 1px solid #949494;
-    width: 100px;
-    height: 30px;
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+        margin-right: 0px;
+    }
+}
+
+.container-filter form {
+    display: flex;
+    gap: 5px;
+}
+
+.container-filter select {
+    padding: 5px;
+    border: 1px solid #000000;
     border-radius: 5px;
+    cursor: pointer;
+
 }
 
-.container-icon-filter span{
-    font-size: 14px;
-    font-weight: 400;
+.button-filter-search {
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 10px 0px 10px;
+
 }
 
-.container-icon-filter .icon-adjustments{
-    font-size: 14px;
+.filter-search {
+    color: #ffffff;
 }
 
 .container-products{

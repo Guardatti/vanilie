@@ -36,9 +36,6 @@ export const validatorJWT = async (req: Request, res: Response, next: NextFuncti
 
         req.body={...req.body,userConfirmated}
         
-        console.log(req.body);
-        
-
         next();
 
     } catch (error) {  
