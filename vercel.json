@@ -1,27 +1,24 @@
 {
     "version": 2,
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
     "builds": [
         {
-        "src": "backend/app.ts",
-        "use": "@vercel/node"
+            "src": "backend/app.ts",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/products(.*)",
+            "src": "/(products|auth|orders)(.*)",
             "dest": "backend/app.ts"
         },
         {
-            "src": "/auth(.*)",
-            "dest": "backend/app.ts"
-        },
-        {
-            "src": "/orders(.*)",
-            "dest": "backend/app.ts"
+            "handle": "filesystem"
         },
         {
             "src": "/(.*)",
-            "dest": "/$1"
+            "dest": "/index.html"
         }
     ]
 }
