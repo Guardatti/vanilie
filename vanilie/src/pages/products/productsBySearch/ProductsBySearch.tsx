@@ -63,7 +63,7 @@ const ProductsBySearch: React.FC = () => {
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(true)
+                setLoading(false)
             }
 
         }
