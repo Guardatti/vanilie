@@ -1,6 +1,6 @@
 {
-    "buildCommand": "cd vanille && npm install && npm run build",
-    "outputDirectory": "vanille/dist",
+    "buildCommand": "cd vanilie && npm install && npm run build",
+    "outputDirectory": "vanilie/dist",
     "installCommand": "cd backend && npm install",
     "rewrites": [
         {
