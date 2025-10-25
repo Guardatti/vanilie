@@ -24,6 +24,7 @@ const Allproducts: React.FC = () => {
 
     const [filterBrand, setFilterBrand] = useState('')
     const [filterSex, setFilterSex] = useState('')
+    const [loading, setLoading] = useState<boolean>(false)
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 30;
@@ -57,9 +58,17 @@ const Allproducts: React.FC = () => {
 
         const findProducts = async (): Promise<void> => {
 
-            const response: IProducts[] = await getProducts();
+            try {
 
-            setProducts(response)
+                setLoading(true);
+                const response: IProducts[] = await getProducts();
+                setProducts(response);
+
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
+            } finally {
+                setLoading(false);
+            }
 
         }
 
@@ -131,17 +140,22 @@ const Allproducts: React.FC = () => {
                 </div>
             </div>
             <div className='container-products'>
-                {currentItems.map((product) => (
-                    <div className='container-product-img-info' key={product._id}>
-                        <div className='container-product-img'>
-                            <img
-                                className='img-product'
-                                src={product.img}
-                                onClick={() => navigate(`/productos/id/${product._id}`)}
-                            />
+                {
+                    loading ?
+                    <div className="spinner" />
+                    :
+                    currentItems.map((product) => (
+                        <div className='container-product-img-info' key={product._id}>
+                            <div className='container-product-img'>
+                                <img
+                                    className='img-product'
+                                    src={product.img}
+                                    onClick={() => navigate(`/productos/id/${product._id}`)}
+                                />
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '30px'}}>
                 <Pagination

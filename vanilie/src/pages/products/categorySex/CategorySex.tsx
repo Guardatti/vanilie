@@ -24,6 +24,8 @@ const CategorySex: React.FC = () => {
 
     const [filterBrand, setFilterBrand] = useState('')
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const [productsBySex, setProductsBySex] = useState<IProducts[]>([])
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,15 +50,20 @@ const CategorySex: React.FC = () => {
             brand: filterBrand || undefined,
         };
 
-        const response: IProducts[] = await getProductsBySex(gender, data);
-        setProductsBySex(response);
-        setCurrentPage(1);
+        try {
+            setLoading(true)
+            const response: IProducts[] = await getProductsBySex(gender, data);
+            setProductsBySex(response);
+            setCurrentPage(1);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
 
     }
 
     useEffect(() => {
-
-        setCurrentPage(1);
 
         if (!gender) {
             navigate('/')
@@ -69,14 +76,22 @@ const CategorySex: React.FC = () => {
         }
 
         const findProducts = async (): Promise<void> => {
-        
-            const response: IProducts[] = await getProductsBySex(gender);
-        
+
+            try {
+                setLoading(true)
+                const response: IProducts[] = await getProductsBySex(gender);
                 setProductsBySex(response)
-        
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false)
             }
         
+        }
+        
         findProducts();
+
+        setCurrentPage(1);
 
         ScrollReveal().reveal(".container-products", {
         origin: "bottom",
@@ -142,7 +157,11 @@ const CategorySex: React.FC = () => {
             </div>
 
             <div className='container-products'>
-                {currentItems.map((product) => (
+                {
+                    loading ? 
+                    <div className='spinner' />
+                    :
+                    currentItems.map((product) => (
                     <div className='container-product-img-info' key={product._id}>
                         <div className='container-product-img'>
                             <img
@@ -152,7 +171,8 @@ const CategorySex: React.FC = () => {
                             />
                         </div>
                     </div>
-                ))}
+                ))
+                }
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '30px' }}>

@@ -11,6 +11,7 @@ import { getProductsBybrand } from '../../../axios/axiosProducts';
 import { GrSearch } from 'react-icons/gr';
 import { useForm } from 'react-hook-form';
 import { IData } from '../../../utils/interfaceData/interfaceData';
+import Pagination from '@mui/material/Pagination';
 
 
 const CategoryProducts: React.FC = () => {
@@ -23,7 +24,25 @@ const CategoryProducts: React.FC = () => {
 
     const [filterSex, setFilterSex] = useState('')
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const [productsByBrand, setProductsByBrand] = useState<IProducts[]>([])
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 30;
+
+    const offset = (currentPage - 1) * itemsPerPage;
+    const currentItems = productsByBrand.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(productsByBrand.length / itemsPerPage);
+
+    const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+        setCurrentPage(value);
+
+        const productsContainer = document.querySelector('.container-general-title-filter');
+        if (productsContainer) {
+            productsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const onSubmit = async () => {
 
@@ -31,8 +50,16 @@ const CategoryProducts: React.FC = () => {
             sex: filterSex || undefined,
         };
 
-        const response: IProducts[] = await getProductsBybrand(brand, data);
-        setProductsByBrand(response);
+        try {
+            setLoading(true)
+            const response: IProducts[] = await getProductsBybrand(brand, data);
+            setProductsByBrand(response);
+            setCurrentPage(1);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false)
+        }
         
     }
 
@@ -50,13 +77,23 @@ const CategoryProducts: React.FC = () => {
 
         const findProducts = async (): Promise<void> => {
         
-            const response: IProducts[] = await getProductsBybrand(brand);
-        
+            try {
+
+                setLoading(true)
+                const response: IProducts[] = await getProductsBybrand(brand);
                 setProductsByBrand(response)
-        
+                        
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false)
             }
+
+        }
         
         findProducts();
+
+        setCurrentPage(1);
 
         ScrollReveal().reveal(".container-products", {
         origin: "bottom",
@@ -111,7 +148,10 @@ const CategoryProducts: React.FC = () => {
             </div>
             <div className='container-products'>
                 {
-                    productsByBrand.filter((x) => x.brand === brand).map((product) => (
+                    loading ?
+                    <div className="spinner" />
+                    :
+                    currentItems.filter((x) => x.brand === brand).map((product) => (
                         <div className='container-product-img-info' key={product._id}>
                             <div className='container-product-img'>
                                 <img className='img-product' src={product.img} onClick={() => navigate(`/productos/marca/${brand}/id/${product._id}`)}/>
@@ -119,6 +159,22 @@ const CategoryProducts: React.FC = () => {
                         </div>
                         ))
                 }
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '30px' }}>
+                <Pagination
+                    count={pageCount}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                    siblingCount={1}
+                    boundaryCount={1}
+                    sx={{
+                        "& .MuiPaginationItem-root.Mui-selected": {
+                            backgroundColor: "#000000",
+                            color: "white",
+                        },
+                    }}
+                />
             </div>
         </div>
     )
