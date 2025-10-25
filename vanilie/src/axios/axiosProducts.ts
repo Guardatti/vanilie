@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../utils/util";
 
 
 interface IData {
@@ -22,7 +23,7 @@ export const getProducts = async (data: IData = {}) => {
 
     try {
 
-        const response = await axios.get(`http://localhost:8080/products?${queryString}`);
+        const response = await axios.get(`${API_URL}/products?${queryString}`);
         return response.data.products;
 
     } catch (error) {
@@ -43,7 +44,7 @@ export const getProductsBybrand = async (brand?: string, data?: IData) => {
 
     try {      
 
-        const response = await axios.get(`http://localhost:8080/products/brand/${brand}?${queryString}`);
+        const response = await axios.get(`${API_URL}/products/brand/${brand}?${queryString}`);
         return response.data.products
 
     } catch (error) {
@@ -64,7 +65,7 @@ export const getProductsBySex = async (sex?: string, data?: IData) => {
 
     try {
         
-        const response = await axios.get(`http://localhost:8080/products/sex/${sex}?${queryString}`)
+        const response = await axios.get(`${API_URL}/products/sex/${sex}?${queryString}`)
         
         return response.data.products
 
@@ -78,7 +79,7 @@ export const getProductsById = async (_id: string) => {
 
     try {
         
-        const response = await axios.get(`http://localhost:8080/products/id/${_id}`)
+        const response = await axios.get(`${API_URL}/products/id/${_id}`)
         
         return response.data.product
 
@@ -96,7 +97,7 @@ export const getProductsBySearch = async (data: string) => {
         
         const queryString = new URLSearchParams({q: data}).toString()
 
-        const response = await axios.get(`http://localhost:8080/products/search?${queryString}`)
+        const response = await axios.get(`${API_URL}/products/search?${queryString}`)
 
         return response.data.products
 

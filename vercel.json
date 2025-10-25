@@ -1,11 +1,23 @@
 {
-    "buildCommand": "cd vanilie && npm install && npm run build",
-    "outputDirectory": "vanilie/dist",
-    "installCommand": "cd backend && npm install",
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/api/(.*)",
-            "destination": "/backend/app.ts"
+        "src": "backend/app.ts",
+        "use": "@vercel/node"
+        },
+        {
+        "src": "vanilie/dist/**/*",
+        "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+        "src": "/api/(.*)",
+        "dest": "backend/app.ts"
+        },
+        {
+        "src": "/(.*)",
+        "dest": "vanilie/dist/$1"
         }
     ]
 }

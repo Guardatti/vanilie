@@ -3,6 +3,7 @@ import { createOrderFail, fetchOrdersFail, fetchOrdersStart, fetchOrdersSuccess 
 import { AppDispatch } from "../redux/store";
 import { IUser } from "../utils/interfaceFormDataLogin_Register/interfaceFormData";
 import { IOrder } from "../utils/interfaceOrdersSlice/interfaceOrdersSlice";
+import { API_URL } from "../utils/util";
 
 
 export const getOrders = async (dispatch: AppDispatch, currentUser: IUser | null) => {
@@ -11,7 +12,7 @@ export const getOrders = async (dispatch: AppDispatch, currentUser: IUser | null
 
     try {
         
-        const orders = await axios.get(`http://localhost:8080/orders`, {headers: {'x-token': currentUser?.token}});
+        const orders = await axios.get(`${API_URL}/orders`, {headers: {'x-token': currentUser?.token}});
 
         if (orders) {
             dispatch(fetchOrdersSuccess(orders.data.data));
@@ -27,7 +28,7 @@ export const getOrders = async (dispatch: AppDispatch, currentUser: IUser | null
 export const createOrder = async(order: IOrder, dispatch: AppDispatch, currentUser: IUser | null) => {
     
     try {
-        const response = await axios.post(`http://localhost:8080/orders`, order, {headers: {'x-token': currentUser?.token}});
+        const response = await axios.post(`${API_URL}/orders`, order, {headers: {'x-token': currentUser?.token}});
 
         if (response) {
             getOrders(dispatch, currentUser)
