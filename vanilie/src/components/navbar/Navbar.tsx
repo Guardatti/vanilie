@@ -86,7 +86,9 @@ const Navbar: React.FC = () => {
         <div className='container-navbar'>
           <div className='container-link-and-arrow'>
             <Link to='/productos' className='link' onClick={closeMenus}>PRODUCTOS</Link>
-            <MdKeyboardArrowDown className='mdkeyboardarrowdown' onClick={toggleDropdownMenu}/>
+            <div className='arrow-container' onClick={toggleDropdownMenu}>
+                <MdKeyboardArrowDown className='mdkeyboardarrowdown'/>
+            </div>
           </div>
           <div className={`dropdownmenu ${menuProducts ? "open" : ""}`}>
             <Link to='/productos/marca/bvlgari' className='link_dropdownmenu' onClick={closeMenus}>Bvlgari</Link>

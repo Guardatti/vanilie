@@ -36,42 +36,45 @@ const OrderDetail: React.FC = () => {
     return (
         <div className='table-container-detail-1'>
             <div className='table-container-detail-2'>
-                <h2>Orden ${id?.slice(0, 10)}</h2>
+                {
+                    !visitedOrder ?
+                    <h2>Numero de orden inexistente</h2>
+                    :
+                    <h2>Orden ${id?.slice(0, 10)}</h2>
+                }
             </div>
             <div className='table-container-detail-3'>
-                <table className='order-table'>
-                    <thead className='order-thead'>
-                    <tr className='order-tr'>
-                        <th className='order-th'>Producto</th>
-                        <th className='order-th'>Marca</th>
-                        <th className='order-th'>Género</th>
-                        <th className='order-th'>Cantidad</th>
-                        <th className='order-th'>Total</th>
-                    </tr>
-                    </thead>
-                    <tbody className='order-tbody'>
-                    {visitedOrder ? (
-                        visitedOrder.items.map((x) => (
-                            <tr key={x.id} className='order-tr'>
-                                <th className='order-th'>{x.title}</th>
-                                <td className='order-td'>{x.brand}</td>
-                                <td className='order-td'>{capitalize(x.sex)}</td>
-                                <td className='order-td' style={{fontFamily: 'none'}}>{x.quantity}</td>
-                                <td className='order-td' style={{fontFamily: 'none'}}>{formatPrice(x.price * x.quantity)}</td>
-                            </tr>
-                        ))
-                        )
-                        :
-                        (
+                {
+                    !visitedOrder ?
+                    <div className='container-orders-empty'>
+                        <p>La orden no existe.</p>
+                    </div>
+                    :
+                    <table className='order-table'>
+                        <thead className='order-thead'>
                             <tr className='order-tr'>
-                            <td className='order-td' colSpan={5} style={{ textAlign: 'center' }}>
-                                La orden no existe.
-                            </td>
+                                <th className='order-th'>Producto</th>
+                                <th className='order-th'>Marca</th>
+                                <th className='order-th'>Genero</th>
+                                <th className='order-th'>Cantidad</th>
+                                <th className='order-th'>Total</th>
                             </tr>
-                        )
-                    }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className='order-tbody'>
+                            {
+                                visitedOrder.items?.map((x) => (
+                                    <tr className='order-tr' key={x.id}>
+                                        <th className='order-th'>{x.title}</th>
+                                        <td className='order-td'>{x.brand}</td>
+                                        <td className='order-td'>{capitalize(x.sex)}</td>
+                                        <td className='order-td' style={{fontFamily: 'none'}}>{x.quantity}</td>
+                                        <td className='order-td' style={{fontFamily: 'none'}}>{formatPrice(x.price * x.quantity)}</td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                }
             </div>
         </div>
     )

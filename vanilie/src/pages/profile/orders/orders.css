@@ -75,6 +75,18 @@
     cursor: pointer; 
 }
 
+.container-orders-empty {
+    width: 100%;
+    background-color: #000000;
+    padding: 20px 0 20px 0px;
+    border-radius: 5px;
+}
+
+.container-orders-empty p {
+    color: #ffffff;
+    text-align: center;
+}
+
 @media (max-width: 767px) {
     .orders-table,
     .orders-thead,

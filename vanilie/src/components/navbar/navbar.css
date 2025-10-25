@@ -74,12 +74,23 @@
 .container-link-and-arrow{
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #000000;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .mdkeyboardarrowdown {
-    cursor: pointer;
     height: 49px;
-    border-bottom: 1px solid #000000;
+    margin-right: 1rem;
+}
+
+.container-link-and-arrow .link{
+    border-bottom: none;
 }
 
 .dropdownmenu{

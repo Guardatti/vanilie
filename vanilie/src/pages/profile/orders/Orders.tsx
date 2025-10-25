@@ -39,42 +39,40 @@ const Orders: React.FC = () => {
                 <h2>MIS PEDIDOS</h2>
             </div>
             <div className='table-container-3'>
-                <table className='orders-table'>
-                    <thead className='orders-thead'>
-                        <tr className='orders-tr'>
-                            <th className='orders-th'>Id</th>
-                            <th className='orders-th'>Fecha</th>
-                            <th className='orders-th'>Total</th>
-                            <th className='orders-th'>Detalle</th>
-                        </tr>
-                    </thead>
-                    <tbody className='orders-tbody'>
-                        {loading && !orders ? (
-                            <tr className='orders-tr'>
-                                <td className='orders-td' colSpan={4} style={{textAlign: 'center'}}>
-                                    <div className="spinner-table-orders" />
-                                </td>
-                            </tr>
-                        ) : orders?.length ? (
-                            orders.map((x) => (
-                                <tr className='orders-tr' key={x._id}>
-                                    <th className='orders-th' data-label="Id" style={{fontFamily: 'none'}}>{x._id?.slice(0,10)}</th>
-                                    <td className='orders-td' data-label="Fecha" style={{fontFamily: 'none'}}>{formatDate(x.createdAt)}</td>
-                                    <td className='orders-td' data-label="Total" style={{fontFamily: 'none'}}>{formatPrice(x.total)}</td>
-                                    <td className='orders-td' data-label="Detalle">
-                                        <button className='detail-button' onClick={() => navigate(`id/${x._id}`)}>Detalle</button>
-                                    </td>
+                {
+                    loading && !orders ?
+                    <div className='spinner-table-orders' />
+                    :
+                    orders?.length ?
+                        <table className='orders-table'>
+                            <thead className='orders-thead'>
+                                <tr className='orders-tr'>
+                                    <th className='orders-th'>Id</th>
+                                    <th className='orders-th'>Fecha</th>
+                                    <th className='orders-th'>Total</th>
+                                    <th className='orders-th'>Detalle</th>
                                 </tr>
-                            ))
-                        ) : (
-                            <tr className='orders-tr'>
-                                <td className='orders-td' colSpan={4} style={{ textAlign: 'center'}}>
-                                    No hay pedidos registrados.
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody className='orders-tbody'>
+                                {
+                                    orders.map((x) => (
+                                        <tr className='orders-tr' key={x._id}>
+                                            <th className='orders-th' data-label="Id" style={{fontFamily: 'none'}}>{x._id?.slice(0,10)}</th>
+                                            <td className='orders-td' data-label="Fecha" style={{fontFamily: 'none'}}>{formatDate(x.createdAt)}</td>
+                                            <td className='orders-td' data-label="Total" style={{fontFamily: 'none'}}>{formatPrice(x.total)}</td>
+                                            <td className='orders-td' data-label="Detalle">
+                                                <button className='detail-button' onClick={() => navigate(`id/${x._id}`)}>Detalle</button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>  
+                    :
+                    <div className='container-orders-empty'>
+                        <p>No hay pedidos registrados.</p>
+                    </div>
+                }
             </div>
         </div>
     )
