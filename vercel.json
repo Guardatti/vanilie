@@ -2,17 +2,25 @@
     "version": 2,
     "builds": [
         {
-            "src": "app.ts",
+            "src": "backend/app.ts",
             "use": "@vercel/node"
+        },
+        {
+            "src": "vanille/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "vanille/dist"
+            }
         }
     ],
     "routes": [
         {
-
+            "src": "/api/(.*)",
+            "dest": "backend/app.ts"
+        },
+        {
             "src": "/(.*)",
-
-            "dest": "app.ts"
-            
+            "dest": "vanille/dist/$1"
         }
     ]
 }
