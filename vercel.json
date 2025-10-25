@@ -1,31 +1,11 @@
 {
-    "version": 2,
-    "builds": [
+    "buildCommand": "cd vanille && npm install && npm run build",
+    "outputDirectory": "vanille/dist",
+    "installCommand": "cd backend && npm install",
+    "rewrites": [
         {
-            "src": "vanille/package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        },
-        {
-            "src": "backend/app.ts",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-
-            "src": "/(.*)",
-
-            "dest": "backend/app.ts"
-            
-        },
-        {
-
-            "src": "/(.*)",
-            "dest": "vanille/dist/$1"
-
+            "source": "/api/(.*)",
+            "destination": "/backend/app.ts"
         }
     ]
 }
