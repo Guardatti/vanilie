@@ -99,7 +99,7 @@ const Register: React.FC = () => {
                     </div>
                     <div className='container-register-label-input'>
                         <input
-                            type="text"
+                            type="email"
                             {...register('email', {required: true})}
                             className='register-input'
                             placeholder='Email'
